@@ -16,7 +16,7 @@ Further, configure your Nginx proxy to verify the server using your CA root cert
 location /upstream {
     ...
     proxy_ssl_trusted_certificate /etc/nginx/${ca_cert};
-    proxy_ssl_verify       on;
-    proxy_ssl_verify_depth 2;
+    proxy_ssl_verify              on;
+    proxy_ssl_verify_depth        2;
 }
 ```
