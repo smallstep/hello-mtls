@@ -1,0 +1,28 @@
+{
+  "name": "hellomtls",
+  "author": "Smallstep",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smallstep/hellomtls.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently 'nodemon --watch ./docs --ext yaml,md ./build.js' next",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1",
+    "css-loader": "^3.2.0",
+    "github-markdown-css": "^3.0.1",
+    "jest": "^24.8.0",
+    "js-yaml": "^3.13.1",
+    "lodash.template": "^4.5.0",
+    "markdown-it": "^9.1.0",
+    "next": "^9.0.3",
+    "nodemon": "^1.19.1",
+    "raw-loader": "^3.1.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "style-loader": "^1.0.0"
+  }
+}
