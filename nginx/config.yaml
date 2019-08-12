@@ -1,0 +1,11 @@
+name: Nginx
+server_auth:
+  docs:
+    - https://nginx.org/en/docs/http/configuring_https_servers.html
+    - https://nginx.org/en/docs/http/ngx_http_ssl_module.html
+client_auth:
+  docs:
+    - https://nginx.org/en/docs/http/ngx_http_ssl_module.html
+client:
+  docs:
+    - https://nginx.org/en/docs/http/ngx_http_proxy_module.html
