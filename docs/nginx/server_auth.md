@@ -7,7 +7,7 @@ server {
     server_name         ${identity_name};
     ssl_certificate     ${identity_cert}
     ssl_certificate_key ${identity_key};
-    ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+    ssl_protocols       TLSv1.2 TLSv1.3;
     ssl_ciphers         HIGH:!aNULL:!MD5;
     ...
 }

@@ -5,7 +5,7 @@ location /upstream {
     proxy_pass                https://backend.example.com;
     proxy_ssl_certificate     ${identity_cert};
     proxy_ssl_certificate_key ${identity_key};
-    proxy_ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+    proxy_ssl_protocols       TLSv1.2 TLSv1.3;
     proxy_ssl_ciphers         HIGH:!aNULL:!MD5;
 }
 ```
