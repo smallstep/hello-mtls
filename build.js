@@ -22,18 +22,39 @@ docs.forEach(doc => {
   const docPath = `./docs/${doc}`;
   const config = readYaml(`${docPath}/config.yaml`);
 
+  let serverAuthContent;
+  try {
+    serverAuthContent = { content: readFile(`${docPath}/server_auth.md`) };
+  } catch (e) {
+    serverAuthContent = {};
+  }
+
+  let clientAuthContent;
+  try {
+    clientAuthContent = { content: readFile(`${docPath}/client_auth.md`) };
+  } catch (e) {
+    clientAuthContent = {};
+  }
+
+  let clientContent;
+  try {
+    clientContent = { content: readFile(`${docPath}/client.md`) };
+  } catch (e) {
+    clientContent = {};
+  }
+
   const out = {
     ...config,
     server_auth: {
-      content: readFile(`${docPath}/server_auth.md`),
+      ...serverAuthContent,
       ...config.server_auth,
     },
     client_auth: {
-      content: readFile(`${docPath}/client_auth.md`),
+      ...clientAuthContent,
       ...config.client_auth,
     },
     client: {
-      content: readFile(`${docPath}/client.md`),
+      ...clientContent,
       ...config.client,
     },
   };

@@ -43,23 +43,70 @@ const Page = () => {
       <h2>Server authentication</h2>
       <div
         dangerouslySetInnerHTML={{
-          __html: renderContent(doc.server_auth.content, templateData),
+          __html:
+            renderContent(doc.server_auth.content, templateData) ||
+            'No content.',
         }}
       />
+      <h3>Links</h3>
+      {doc.server_auth && doc.server_auth.links ? (
+        <ul>
+          {doc.server_auth.links.map(link => (
+            <li key={link}>
+              <a href={link} target="_blank">
+                {link}
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        'No links.'
+      )}
 
       <h2>Client authentication</h2>
       <div
         dangerouslySetInnerHTML={{
-          __html: renderContent(doc.client_auth.content, templateData),
+          __html:
+            renderContent(doc.client_auth.content, templateData) ||
+            'No content.',
         }}
       />
+      <h3>Links</h3>
+      {doc.client_auth && doc.client_auth.links ? (
+        <ul>
+          {doc.client_auth.links.map(link => (
+            <li key={link}>
+              <a href={link} target="_blank">
+                {link}
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        'No links.'
+      )}
 
       <h2>Client requests</h2>
       <div
         dangerouslySetInnerHTML={{
-          __html: renderContent(doc.client.content, templateData),
+          __html:
+            renderContent(doc.client.content, templateData) || 'No content.',
         }}
       />
+      <h3>Links</h3>
+      {doc.client_auth && doc.client_auth.links ? (
+        <ul>
+          {doc.client_auth.links.map(link => (
+            <li key={link}>
+              <a href={link} target="_blank">
+                {link}
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        'No links.'
+      )}
     </div>
   );
 };
