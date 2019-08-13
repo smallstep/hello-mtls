@@ -1,0 +1,4 @@
+name: Curl
+client:
+  links:
+    - https://ec.haxx.se/usingcurl-tls.html
