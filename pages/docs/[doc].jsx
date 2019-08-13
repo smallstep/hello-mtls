@@ -38,7 +38,7 @@ const Page = () => {
 
   return (
     <div>
-      <h1>Nginx</h1>
+      <h1>{doc.name}</h1>
 
       <h2>Server authentication</h2>
       <div
@@ -94,9 +94,9 @@ const Page = () => {
         }}
       />
       <h3>Links</h3>
-      {doc.client_auth && doc.client_auth.links ? (
+      {doc.client && doc.client.links ? (
         <ul>
-          {doc.client_auth.links.map(link => (
+          {doc.client.links.map(link => (
             <li key={link}>
               <a href={link} target="_blank">
                 {link}
