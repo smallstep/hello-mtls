@@ -45,6 +45,14 @@ If your documentation makes use of the name of a certificate's identity, its cer
 3. `${identity_key}` - Filename of the identity's private key like `example.key`
 3. `${ca_cert}` - Filename of the root CA certificate `ca.crt`
 
+## License
+
+Code in this repository is licensed under [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+All [documentation content](docs/) is licensed under [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+
 ## Thanks!
 
 Please don't hesitate to reach out on [our Gitter](https://gitter.im/smallstep/community) with any questions.
