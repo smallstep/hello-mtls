@@ -6,6 +6,9 @@ import Ajv from 'ajv';
 import topics from '../src/topics';
 import { toHTML } from '../src/utils';
 
+const docsPath = path.resolve(__dirname, '../docs');
+const docs = fs.readdirSync(docsPath).filter(name => name !== 'LICENSE.txt');
+
 const ajv = new Ajv();
 const validateConfig = ajv.compile({
   type: 'object',
@@ -39,26 +42,50 @@ const validateConfig = ajv.compile({
   required: ['name'],
 });
 
-const docsPath = path.resolve(__dirname, '../docs');
-fs.readdirSync(docsPath)
-  .filter(name => name !== 'LICENSE.txt')
-  .forEach(name => {
-    test(`${name}: contains valid config.yaml`, () => {
-      const filepath = path.resolve(docsPath, name, 'config.yaml');
-      const config = yaml.safeLoad(fs.readFileSync(filepath));
-      if (!validateConfig(config)) {
-        const error = validateConfig.errors[0];
-        fail(
-          `${error.dataPath ? error.dataPath + ' ' : ''}${
-            error.message
-          } : ${Object.keys(error.params)
-            .map(key => key + ' => ' + error.params[key])
-            .join(',')}`
-        );
+docs.forEach(name => {
+  test(`${name}: contains valid config.yaml`, () => {
+    const filepath = path.resolve(docsPath, name, 'config.yaml');
+    const config = yaml.safeLoad(fs.readFileSync(filepath));
+    if (!validateConfig(config)) {
+      const error = validateConfig.errors[0];
+      fail(
+        `${error.dataPath ? error.dataPath + ' ' : ''}${
+          error.message
+        } : ${Object.keys(error.params)
+          .map(key => key + ' => ' + error.params[key])
+          .join(',')}`
+      );
+    }
+  });
+});
+
+docs.forEach(name => {
+  test(`${name}: contains valid markdown topics`, () => {
+    topics.forEach(topic => {
+      const filepath = path.resolve(
+        docsPath,
+        name,
+        'topics',
+        `${topic.key}.md`
+      );
+
+      let source;
+      try {
+        source = fs.readFileSync(filepath);
+      } catch (e) {
+        // file doesn't exist
+        return;
+      }
+
+      try {
+        toHTML(source);
+      } catch (e) {
+        fail(`${topic.key}.md: ${e}`);
       }
     });
   });
+});
 
-test('contains valid markdown topics', () => {});
-
-test('contains valid logo images', () => {});
+docs.forEach(name => {
+  test(`${name}: contains valid logo`, () => {});
+});

@@ -2,7 +2,7 @@ import template from 'lodash/template';
 import markdownit from 'markdown-it';
 import Prism from 'prismjs';
 
-export const toHTML = (content, data, options = {}) => {
+export const toHTML = (content, data = {}, options = {}) => {
   const md = new markdownit({
     highlight:
       options.highlight ||
