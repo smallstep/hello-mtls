@@ -4,15 +4,25 @@ import Prism from 'prismjs';
 
 export const toHTML = (content, data, options = {}) => {
   const md = new markdownit({
-    highlight: options.highlight || ((str, lang) => {
-      if (lang) {
-        require(`prismjs/components/prism-${lang}`);
-        try {
-          return `<pre class="language-${lang}"><code>${Prism.highlight(str, Prism.languages[lang], lang)}</code></pre>`;
-        } catch (e) {}
-      }
-      return `<pre class="language-${lang}"><code>${md.utils.escapeHtml(str)}</code></pre>`;
-    })
+    highlight:
+      options.highlight ||
+      ((str, lang) => {
+        if (lang) {
+          require(`prismjs/components/prism-${lang}`);
+
+          try {
+            return `<pre class="language-${lang}"><code>${Prism.highlight(
+              str,
+              Prism.languages[lang],
+              lang
+            )}</code></pre>`;
+          } catch (e) {}
+        }
+
+        return `<pre class="language-${lang}"><code>${md.utils.escapeHtml(
+          str
+        )}</code></pre>`;
+      }),
   });
 
   const parse = template(content);
