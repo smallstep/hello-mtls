@@ -62,6 +62,6 @@ All [documentation content](docs/) is licensed under [Creative Commons Attributi
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
 
-## Thanks!
+## Support
 
 Please don't hesitate to reach out on [our Gitter](https://gitter.im/smallstep/community) with any questions.
