@@ -16,6 +16,7 @@
     "jest": "^24.8.0",
     "js-yaml": "^3.13.1",
     "next": "^9.0.3",
+    "prismjs": "^1.17.1",
     "raw-loader": "^3.1.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -23,10 +24,10 @@
   },
   "dependencies": {
     "lodash": "^4.17.15",
-    "markdown-it": "^9.1.0",
-    "prismjs": "^1.17.1"
+    "markdown-it": "^9.1.0"
   },
   "peerDependencies": {
+    "prismjs": "^1.17.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   }
