@@ -13,7 +13,7 @@ module.exports = {
         include: [path.resolve('./docs')],
         use: [
           {
-            loader: path.resolve('./src/loader'),
+            loader: path.resolve('./src/doc-loader'),
           },
         ],
       },
