@@ -48,6 +48,8 @@ If your documentation makes use of the name of a certificate's identity, its cer
 - `${identity_key}` &mdash; Filename of the identity's private key like `example.key`
 - `${ca_cert}` &mdash; Filename of the root CA certificate like `ca.crt`
 
+Do not use markdow headlines.
+
 ## License
 
 Code in this repository is licensed under [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
