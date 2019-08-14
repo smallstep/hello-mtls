@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
-const loaderUtils = require('loader-utils');
 const merge = require('lodash/merge');
 
 const topicNames = ['server_auth', 'client_auth', 'client', 'renewal'];

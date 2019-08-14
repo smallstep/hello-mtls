@@ -1,12 +1,11 @@
 import Link from 'next/link';
-
-import docs from '../build/index.json';
+import docs from '../src/docs';
 
 const Page = () => (
   <div>
     <h1>Docs</h1>
   <ul>
-    {docs.docs.map(doc => (
+    {docs.map(doc => (
       <li key="{doc}">
         <Link href="/docs/[doc]" as={`/docs/${doc}`}>
           {doc}

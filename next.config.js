@@ -13,7 +13,16 @@ module.exports = {
         include: [path.resolve('./docs')],
         use: [
           {
-            loader: path.resolve('./src/doc-loader'),
+            loader: path.resolve('./src/loaders/doc-loader'),
+          },
+        ],
+      },
+      {
+        test: /docs\.js$/,
+        include: [path.resolve('./src')],
+        use: [
+          {
+            loader: path.resolve('./src/loaders/docs-list-loader'),
           },
         ],
       },
