@@ -3,7 +3,7 @@
   "author": "Smallstep",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/smallstep/hellomtls.git"
+    "url": "git+https://github.com/smallstep/hello-mtls.git"
   },
   "main": "./dist/index.js",
   "scripts": {
