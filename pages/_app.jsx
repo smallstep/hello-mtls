@@ -7,6 +7,11 @@ const App = ({ Component, pageProps }) => (
   >
     <style dangerouslySetInnerHTML={{ __html: githubMarkdownCss.toString() }} />
 
+    <style>{`
+      .markdown-body pre code {
+        font-size: 1.2em;
+      }
+    `}</style>
     <Component {...pageProps} />
   </div>
 );
