@@ -9,6 +9,32 @@ import { toHTML } from '../src/utils';
 const docsPath = path.resolve(__dirname, '../docs');
 const docs = fs.readdirSync(docsPath).filter(name => name !== 'LICENSE.txt');
 
+const validTopicFiles = topics.map(topic => `${topic.key}.md`);
+
+docs.forEach(name => {
+  test(`${name}: contains only valid files`, () => {
+    const docPath = path.resolve(docsPath, name);
+    const topicsPath = path.resolve(docPath, 'topics');
+
+    fs.readdirSync(docPath).forEach(file => {
+      if (!['config.yaml', 'logo.png', 'topics'].includes(file)) {
+        fail(`Unexpected file ${file}`);
+      }
+    });
+
+    try {
+      fs.readdirSync(topicsPath).forEach(file => {
+        if (!validTopicFiles.includes(file)) {
+          fail(`Unexpected file topics/${file}`);
+        }
+      });
+    } catch (e) {
+      // no topics files;
+      return;
+    }
+  });
+});
+
 const ajv = new Ajv();
 const validateConfig = ajv.compile({
   type: 'object',
