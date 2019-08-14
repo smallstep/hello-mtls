@@ -2,6 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import Ajv from 'ajv';
+import readChunk from 'read-chunk';
+import imageType from 'image-type';
+import sizeOf from 'image-size';
 
 import topics from '../src/topics';
 import { toHTML } from '../src/utils';
@@ -113,5 +116,24 @@ docs.forEach(name => {
 });
 
 docs.forEach(name => {
-  test(`${name}: contains valid logo`, () => {});
+  test(`${name}: contains valid logo`, () => {
+    const imgPath = path.resolve(docsPath, name, 'logo.png');
+
+    let buffer;
+    try {
+      buffer = readChunk.sync(imgPath, 0, 12);
+    } catch (e) {
+      // no logo
+      return;
+    }
+
+    if (imageType(buffer).mime !== 'image/png') {
+      fail('Logo is not a valid PNG image');
+    }
+
+    const dimensions = sizeOf(imgPath);
+    if (dimensions.width !== 256 || dimensions.height !== 256) {
+      fail('Logo must be 256 x 256 pixels');
+    }
+  });
 });
