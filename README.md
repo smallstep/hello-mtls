@@ -46,7 +46,7 @@ If your documentation makes use of the name of a certificate's identity, its cer
 - `${identity_name}` &mdash; Name of the identity like `example.internal.net`
 - `${identity_cert}` &mdash; Filename of the identity's certificate like `example.crt`
 - `${identity_key}` &mdash; Filename of the identity's private key like `example.key`
-- `${ca_cert}` &mdash; Filename of the root CA certificate `ca.crt`
+- `${ca_cert}` &mdash; Filename of the root CA certificate like `ca.crt`
 
 ## License
 
