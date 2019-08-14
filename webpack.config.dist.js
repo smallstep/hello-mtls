@@ -1,9 +1,24 @@
 const path = require('path');
 
 module.exports = {
-  webpack: (config, { dev }) => {
-    config.module.rules = [
-      ...config.module.rules,
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
+    chunkFilename: '[name].js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+        resolve: {
+          extensions: ['.js', '.jsx'],
+        },
+      },
       {
         test: /config\.yaml$/,
         include: [path.resolve('./docs')],
@@ -22,7 +37,6 @@ module.exports = {
           },
         ],
       },
-    ];
-    return config;
+    ],
   },
 };

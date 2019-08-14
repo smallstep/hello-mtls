@@ -2,26 +2,30 @@ import template from 'lodash/template';
 import markdownit from 'markdown-it';
 import Prism from 'prismjs';
 
-export const toHTML = (content, data = {}, options = {}) => {
+export const toHTML = (content, data = {}, options = {}, callback) => {
   const md = new markdownit({
     highlight:
       options.highlight ||
       ((str, lang) => {
         if (lang) {
-          require(`prismjs/components/prism-${lang}`);
-
-          try {
-            return `<pre class="language-${lang}"><code>${Prism.highlight(
-              str,
-              Prism.languages[lang],
-              lang
-            )}</code></pre>`;
-          } catch (e) {}
+          import(`prismjs/components/prism-${lang}`)
+            .then(() => {
+              callback(
+                `<pre class="language-${lang}"><code>${Prism.highlight(
+                  str,
+                  Prism.languages[lang],
+                  lang
+                )}</code></pre>`
+              );
+            })
+            .catch(() => {
+              callback(
+                `<pre class="language-${lang}"><code>${md.utils.escapeHtml(
+                  str
+                )}</code></pre>`
+              );
+            });
         }
-
-        return `<pre class="language-${lang}"><code>${md.utils.escapeHtml(
-          str
-        )}</code></pre>`;
       }),
   });
 

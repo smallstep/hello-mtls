@@ -9,11 +9,11 @@
   "scripts": {
     "start": "next",
     "test": "jest",
-    "lint": "prettier --check 'src/**/*.{js,jsx}'"
+    "lint": "prettier --check 'src/**/*.{js,jsx}'",
+    "dist": "webpack --config webpack.config.dist.js --mode production"
   },
   "devDependencies": {
     "ajv": "^6.10.2",
-    "css-loader": "^3.2.0",
     "github-markdown-css": "^3.0.1",
     "image-size": "^0.7.4",
     "image-type": "^4.1.0",
@@ -26,7 +26,8 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "read-chunk": "^3.2.0",
-    "style-loader": "^1.0.0"
+    "style-loader": "^1.0.0",
+    "webpack-cli": "^3.3.6"
   },
   "dependencies": {
     "lodash": "^4.17.15",

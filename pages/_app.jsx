@@ -1,4 +1,4 @@
-import githubMarkdownCss from 'github-markdown-css/github-markdown.css';
+import githubMarkdownCss from 'raw-loader!github-markdown-css/github-markdown.css';
 
 const App = ({ Component, pageProps }) => (
   <div

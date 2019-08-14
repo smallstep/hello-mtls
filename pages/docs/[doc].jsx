@@ -5,7 +5,7 @@ import template from 'lodash/template';
 import topics from '../../src/topics.json';
 import Content from '../../src/Content';
 
-import prismCss from 'prismjs/themes/prism-tomorrow.css';
+import prismCss from 'raw-loader!prismjs/themes/prism-tomorrow.css';
 
 const Page = () => {
   const [doc, setDoc] = useState(null);
