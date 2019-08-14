@@ -9,7 +9,7 @@ module.exports = function(source) {
   const config = yaml.safeLoad(source);
 
   const topics = topicNames.reduce((obj, name) => {
-    const filepath = path.resolve(this.context, `${name}.md`);
+    const filepath = path.resolve(this.context, `topics/${name}.md`);
     this.addDependency(filepath);
 
     try {

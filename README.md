@@ -30,20 +30,23 @@ This file configures basic information like the technology name and external lin
 
 This is a 256 x 256px transparent PNG of the technology's logo. If missing, a standard placeholder will be used.
 
-#### Documentation templates
+#### topics/
 
-Three optional markdown files provide prose describing how to configure the technology for three different scenarios:
+Several optional markdown files provide prose describing how to perform different aspects of mTLS using the technology:
 
-1. Server TLS authentication (`server_auth.md`)
-2. Client TLS authentication (`client_auth.md`)
-3. Client requests using TLS (`client.md`)
+- `server_auth.md` &mdash; Server TLS authentication 
+- `client_auth.md` &mdash; Client TLS authentication
+- `client.md` &mdash; Client requests using TLS
+- `renewal.md` &mdash; TLS cetificate renewal
+
+Properties with corresponding names in the `topics` object in `config.yaml` also accept a `links` array for any relevant external resources.
 
 If your documentation makes use of the name of a certificate's identity, its certificate filename, its private key filename, or the root certificate filename, please use these template tokens. They will be interpolated with the appropriate values at build time in different contexts:
 
-1. `${identity_name}` - Name of the identity like `example.internal.net`
-2. `${identity_cert}` - Filename of the identity's certificate like `example.crt`
-3. `${identity_key}` - Filename of the identity's private key like `example.key`
-3. `${ca_cert}` - Filename of the root CA certificate `ca.crt`
+- `${identity_name}` &mdash; Name of the identity like `example.internal.net`
+- `${identity_cert}` &mdash; Filename of the identity's certificate like `example.crt`
+- `${identity_key}` &mdash; Filename of the identity's private key like `example.key`
+- `${ca_cert}` &mdash; Filename of the root CA certificate `ca.crt`
 
 ## License
 
