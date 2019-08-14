@@ -1,0 +1,18 @@
+[
+  {
+    "key": "server_auth",
+    "name": "Server authentication"
+  },
+  {
+    "key": "client_auth",
+    "name": "Client authentication"
+  },
+  {
+    "key": "client",
+    "name": "Client reqeusts"
+  },
+  {
+    "key": "renewal",
+    "name": "Certificate renewal"
+  }
+]

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import template from 'lodash/template';
 
+import topics from '../../src/topics.json';
 import Content from '../../src/Content';
 
 import prismCss from 'prismjs/themes/prism-tomorrow.css';
@@ -28,86 +29,38 @@ const Page = () => {
     <div>
       <style dangerouslySetInnerHTML={{ __html: prismCss.toString() }} />
       <h1>{doc.name}</h1>
-      <h2>Server authentication</h2>
-      {doc.topics.server_auth && doc.topics.server_auth.content ? (
-        <Content content={doc.topics.server_auth.content} />
-      ) : (
-        'No content'
-      )}
-      <h3>Links</h3>
-      {doc.topics.server_auth && doc.topics.server_auth.links ? (
-        <ul>
-          {doc.topics.server_auth.links.map(link => (
-            <li key={link}>
-              <a href={link} target="_blank">
-                {link}
-              </a>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        'No links.'
-      )}
-      <h2>Client authentication</h2>
-      {doc.topics.client_auth && doc.topics.client_auth.content ? (
-        <Content content={doc.topics.client_auth.content} />
-      ) : (
-        'No content'
-      )}
-      <h3>Links</h3>
-      {doc.topics.client_auth && doc.topics.client_auth.links ? (
-        <ul>
-          {doc.topics.client_auth.links.map(link => (
-            <li key={link}>
-              <a href={link} target="_blank">
-                {link}
-              </a>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        'No links.'
-      )}
-      <h2>Client requests</h2>
-      {doc.topics.client && doc.topics.client.content ? (
-        <Content content={doc.topics.client.content} />
-      ) : (
-        'No content'
-      )}
-      <h3>Links</h3>
-      {doc.topics.client && doc.topics.client.links ? (
-        <ul>
-          {doc.topics.client.links.map(link => (
-            <li key={link}>
-              <a href={link} target="_blank">
-                {link}
-              </a>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        'No links.'
-      )}
-      <h2>Certificate renewal</h2>
-      {doc.topics.renewal && doc.topics.renewal.content ? (
-        <Content content={doc.topics.renewal.content} />
-      ) : (
-        'No content'
-      )}
-      <h3>Links</h3>
-      {doc.topics.renewal && doc.topics.renewal.links ? (
-        <ul>
-          {doc.topics.renewal.links.map(link => (
-            <li key={link}>
-              <a href={link} target="_blank">
-                {link}
-              </a>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        'No links.'
-      )}
+
+      {topics.map(topic => {
+        if (!doc.topics || !doc.topics[topic.key]) {
+          return null;
+        }
+
+        return (
+          <div key={topic.key}>
+            <h2>{topic.name}</h2>
+            {'content' in doc.topics[topic.key] ? (
+              <Content content={doc.topics[topic.key].content} />
+            ) : (
+              'No content'
+            )}
+
+            <h3>Links</h3>
+            {'links' in doc.topics[topic.key] ? (
+              <ul>
+                {doc.topics[topic.key].links.map(link => (
+                  <li key={link}>
+                    <a href={link} target="_blank">
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              'No links.'
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };
