@@ -9,6 +9,6 @@ server {
     ssl_certificate_key ${identity_key};
     ssl_protocols       TLSv1.2 TLSv1.3;
     ssl_ciphers         HIGH:!aNULL:!MD5;
-    ...
+    # ...
 }
 ```

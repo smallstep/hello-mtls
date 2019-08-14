@@ -4,6 +4,8 @@ import template from 'lodash/template';
 
 import Content from '../../src/Content';
 
+import prismCss from 'prismjs/themes/prism-tomorrow.css';
+
 const Page = () => {
   const [doc, setDoc] = useState(null);
   const router = useRouter();
@@ -24,6 +26,7 @@ const Page = () => {
 
   return (
     <div>
+      <style dangerouslySetInnerHTML={{ __html: prismCss.toString() }} />
       <h1>{doc.name}</h1>
       <h2>Server authentication</h2>
       {doc.topics.server_auth && doc.topics.server_auth.content ? (

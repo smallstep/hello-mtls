@@ -7,6 +7,7 @@ location /upstream {
     proxy_ssl_certificate_key ${identity_key};
     proxy_ssl_protocols       TLSv1.2 TLSv1.3;
     proxy_ssl_ciphers         HIGH:!aNULL:!MD5;
+    # ...
 }
 ```
 
@@ -14,9 +15,10 @@ Further, configure your Nginx proxy to verify the server using your CA root cert
 
 ```nginx
 location /upstream {
-    ...
+    # ...
     proxy_ssl_trusted_certificate /etc/nginx/${ca_cert};
     proxy_ssl_verify              on;
     proxy_ssl_verify_depth        2;
+    # ...
 }
 ```
