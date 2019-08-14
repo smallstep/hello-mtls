@@ -6,7 +6,7 @@ const Page = () => (
     <h1>Docs</h1>
     <ul>
       {docs.map(doc => (
-        <li key="{doc}">
+        <li key={doc}>
           <Link href="/docs/[doc]" as={`/docs/${doc}`}>
             <a>{doc}</a>
           </Link>
