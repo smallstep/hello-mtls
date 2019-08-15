@@ -6,12 +6,6 @@ const App = ({ Component, pageProps }) => (
     style={{ margin: '45px auto', width: '100%', maxWidth: '960px' }}
   >
     <style dangerouslySetInnerHTML={{ __html: githubMarkdownCss.toString() }} />
-
-    <style>{`
-      .markdown-body pre code {
-        font-size: 1.2em;
-      }
-    `}</style>
     <Component {...pageProps} />
   </div>
 );
