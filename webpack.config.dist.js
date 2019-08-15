@@ -6,6 +6,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
     chunkFilename: '[name].js',
+    library: 'hello-mtls',
+    libraryTarget: 'umd',
+    globalObject: "typeof self !== 'undefined' ? self : this",
   },
   module: {
     rules: [
@@ -38,5 +41,10 @@ module.exports = {
         ],
       },
     ],
+  },
+  externals: {
+    React: 'react',
+    ReactDOM: 'react-dom',
+    Prism: 'prismjs',
   },
 };
