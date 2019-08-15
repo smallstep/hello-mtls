@@ -24,7 +24,7 @@ jobs:
 stages:
   - verify
   - name: version
-    if: branch = master
+    if: branch = master AND tag IS NOT present
   - name: publish
     if: tag IS present
 env:
