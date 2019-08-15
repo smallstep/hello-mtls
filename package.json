@@ -1,5 +1,5 @@
 {
-  "name": "hello-mtls",
+  "name": "@smallstep/hello-mtls",
   "version": "0.0.1",
   "author": "Smallstep",
   "license": "Apache-2.0",
