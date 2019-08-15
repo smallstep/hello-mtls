@@ -1,11 +1,21 @@
+const fs = require('fs');
 const path = require('path');
 
+const docsPath = path.resolve(__dirname, 'docs');
+const docs = fs.readdirSync(docsPath).filter(doc => doc !== 'LICENSE.txt');
+
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    ...docs.reduce((obj, doc) => {
+      obj[`docs/${doc}`] = `./docs/${doc}/config.yaml`;
+      return obj;
+    }, {}),
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js',
-    chunkFilename: '[name].js',
+    filename: '[name].js',
+    chunkFilename: 'chunk-[name].js',
     library: 'hello-mtls',
     libraryTarget: 'umd',
     globalObject: "typeof self !== 'undefined' ? self : this",
