@@ -1,13 +1,20 @@
 language: node_js
 node_js:
-- 10
-
+  - "10"
 jobs:
   include:
   - stage: verify
-    script:
-      - yarn lint
-      - yarn test
+    script: "./ci/verify.sh"
+
+  - stage: version
+    script: "./ci/version.sh"
+    deploy:
+      provider: releases
+      api_key:
+        secure: pr6VUn+4XE1oJ/FJyAjasPCwHLgoqbAPGITB+fPPQGpfHVkVY3sjpMwI7oHht2V/3sPMs4xTsjE0hZ99l28kZLACLK4mNTFSZVEiTTowFp6HL/KNoglTvBqSBCfaQwshyDw4NdJmD4HbpDbBW4HgJzXtGIHlgOj/bFQe7A9GdLr1CMZDEuSoFsPzxinWWTzcJSC+4Oo5akZUHDVev5YBxq2193U+n7tWatdaEqzV3BFdtI0zEUvxW1wFvSh+tDHvhvhZaWFralbsQ7FLoluveF/uIMIM6/xQFQ9IW39hc6bjEFh62cLTLJ+5QEaxx09yxm2c7nFDWN2FonqzsL7/va5ZJG2/wuw3PNfcfQSeTgshiBhcy95UYvbnut3l4N0DIbDA4MYAXKunnjv462iXJyjZrYZRH8jmRUkq+gABNnhoUp1W59n4W6D/fLkkhMROQ4Gm3w9kXuLIzWL+8quHn4+cqWMIijL3dSkjhvxg/Rtdz0Kpj2bx+XXilkl0AbT8drilWqhLiYouZJTv5mKdeRRFkW5YzeBjaKWp/5NIroDmjT4KJVLwt2Eo9xdZPZB7+g1jW18r6+5hSxOIP+JPkCaAU3aJun8SruTpYXTr5GrfsBaMOVnXidUZmwEcJv9YXXY9yi1+K8vRtOhtVV3V+g2+f5+V9FAtxUbUvvU7iOw=
+      on:
+        branch: master
+        repo: smallstep/hello-mtls
 
   - stage: publish
     script: yarn dist
@@ -23,5 +30,11 @@ jobs:
 
 stages:
   - verify
+  - name: version
+    if: branch = master
   - name: publish
     if: tag IS present
+
+env:
+  global:
+    secure: f6KVyeNGEx0eDj2ZPxmhLhOrC7JUBJV/XVKyf+6fJ/x5uH4tS9CSgybSyxmwM0gYo/Z/TB76mSvzdG1wy4aN+IKDLIsN7vEC2SQCnAVIxvR1LPKQJt9HiyWLtzN70x51rOmsL+nooRaUbQUWKMIFipjXtUlQZXTR/zZuJ0moJrOQwsf8lSwbzRsAUe35U+cX3vzgMRVUardAveNEVaklLdkfJ9fez5eM4vGz79JmeBejXUqGpN0+lS6nN3lJCUpimqpMkFrbJlkmrtMgN2zw2PcCQNdWsAi5o5BihKJLPXINCg8EgPrzZfpHWC8jSvRCRc4TQXXkmYoEFZsT8lhQXuvXFOmQHT29nb/kQbt2lP7RRinv/fJkkzmC47WLicWxZkkEYFYbq3cH9USLl7ikaWafuL0lhCKDE5s6scHU+CBlTt8tUnKqpgn1OCObGdn9UDJ2eUt3/12TezXHnbnPchctYpCOVolI20q0L6iATn0jV0xIdK5r7JDngKIhcd8E5+A8m9OfywpUIEEQ2ZL7Vdsi5/NFRhjQGcq3wKqDRgwMZkqhp/rAkuZ/b03G/VMHLznipAEJvdpgxQG35kpESh2neDx6tyY44jO1MfS1f/bVBvRSwQS/tIOeTOy5bnoDILSgvPIAhx45Rqchpm7B3EHoFGXtb/3Q3fvs2jVALB8=
