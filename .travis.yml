@@ -3,38 +3,31 @@ node_js:
   - "10"
 jobs:
   include:
-  - stage: verify
-    script: "./ci/verify.sh"
-
-  - stage: version
-    script: "./ci/version.sh"
-    deploy:
-      provider: releases
-      api_key:
-        secure: pr6VUn+4XE1oJ/FJyAjasPCwHLgoqbAPGITB+fPPQGpfHVkVY3sjpMwI7oHht2V/3sPMs4xTsjE0hZ99l28kZLACLK4mNTFSZVEiTTowFp6HL/KNoglTvBqSBCfaQwshyDw4NdJmD4HbpDbBW4HgJzXtGIHlgOj/bFQe7A9GdLr1CMZDEuSoFsPzxinWWTzcJSC+4Oo5akZUHDVev5YBxq2193U+n7tWatdaEqzV3BFdtI0zEUvxW1wFvSh+tDHvhvhZaWFralbsQ7FLoluveF/uIMIM6/xQFQ9IW39hc6bjEFh62cLTLJ+5QEaxx09yxm2c7nFDWN2FonqzsL7/va5ZJG2/wuw3PNfcfQSeTgshiBhcy95UYvbnut3l4N0DIbDA4MYAXKunnjv462iXJyjZrYZRH8jmRUkq+gABNnhoUp1W59n4W6D/fLkkhMROQ4Gm3w9kXuLIzWL+8quHn4+cqWMIijL3dSkjhvxg/Rtdz0Kpj2bx+XXilkl0AbT8drilWqhLiYouZJTv5mKdeRRFkW5YzeBjaKWp/5NIroDmjT4KJVLwt2Eo9xdZPZB7+g1jW18r6+5hSxOIP+JPkCaAU3aJun8SruTpYXTr5GrfsBaMOVnXidUZmwEcJv9YXXY9yi1+K8vRtOhtVV3V+g2+f5+V9FAtxUbUvvU7iOw=
-      on:
-        branch: master
-        repo: smallstep/hello-mtls
-
-  - stage: publish
-    script: yarn dist
-    deploy:
-      provider: npm
-      email: alan@smallstep.com
-      api_key:
-        secure: M/+TvQj31kw+nGNTF9yXcU75ewElZfR2eTgXOQ9jvPbLUVYQdYnqGT7CVvPPmkYILWZ2ww2lQ9qqNIh0Te5OP0pIMavmWy4yd++rGu3w4ppKnUWsSftsEYcPIR8b1YBV3cdLWeBqmSxANPsKZaxJqg+MhnCpd6FrGdXlX1jqRlmJV4citfaSptDkpWd4rnkDR/dHKqC24KCTA+XiwAKkPiA5VQELhdQI4bEg0bOkzQAcCLIovUHX7Aflj3WNQbqJW0W7nmomCug6p6O3oeVHeJFrOU4V7RYu0T8CfeMsmwTmZ2mubagyZgGynTtA6kdoCry0gE1YR8RZXf8nwqd3dQ8KruKrmjFpwnNh7NEAI9GBFat/beAumqyhP2ND1CyuHMHFYGN+EIoLqKyxgS+N9ndGbmDvVSsiSopr17uhNY4NQeLpbvY4WL/6lRsrcTOrWy1y7tFyrZ3gJ6nENNnXm0PNSygBcsybrqTlRmrPP0uTODCBBQUMdqYUwvBt1Ht2R4a6gUmZlE8OAClSMvf6o1pxB5gg9xcYKLfTlhieDXSpenn4f3lhPjhXiCSj1XOU43Arp704dJhU1sAuN94kSgV+fiR9YNRYHHGpEd1x/o6bOj4n8HdJkLzodiAznUwmO11kysL6dxs4Vm63CYmnL3loug2PLO0JlDv8DwdkV5Y=
-      on:
-        tags: true
-        repo: smallstep/hello-mtls
-      tag: next
-
+    - stage: verify
+      script: "./ci/verify.sh"
+    - stage: version
+      script: "./ci/version.sh"
+      deploy:
+        provider: releases
+        api_key:
+          secure: pr6VUn+4XE1oJ/FJyAjasPCwHLgoqbAPGITB+fPPQGpfHVkVY3sjpMwI7oHht2V/3sPMs4xTsjE0hZ99l28kZLACLK4mNTFSZVEiTTowFp6HL/KNoglTvBqSBCfaQwshyDw4NdJmD4HbpDbBW4HgJzXtGIHlgOj/bFQe7A9GdLr1CMZDEuSoFsPzxinWWTzcJSC+4Oo5akZUHDVev5YBxq2193U+n7tWatdaEqzV3BFdtI0zEUvxW1wFvSh+tDHvhvhZaWFralbsQ7FLoluveF/uIMIM6/xQFQ9IW39hc6bjEFh62cLTLJ+5QEaxx09yxm2c7nFDWN2FonqzsL7/va5ZJG2/wuw3PNfcfQSeTgshiBhcy95UYvbnut3l4N0DIbDA4MYAXKunnjv462iXJyjZrYZRH8jmRUkq+gABNnhoUp1W59n4W6D/fLkkhMROQ4Gm3w9kXuLIzWL+8quHn4+cqWMIijL3dSkjhvxg/Rtdz0Kpj2bx+XXilkl0AbT8drilWqhLiYouZJTv5mKdeRRFkW5YzeBjaKWp/5NIroDmjT4KJVLwt2Eo9xdZPZB7+g1jW18r6+5hSxOIP+JPkCaAU3aJun8SruTpYXTr5GrfsBaMOVnXidUZmwEcJv9YXXY9yi1+K8vRtOhtVV3V+g2+f5+V9FAtxUbUvvU7iOw=
+        on:
+          branch: master
+          repo: smallstep/hello-mtls
+    - stage: publish
+      deploy:
+        provider: script
+        script: "./ci/publish.sh"
+        on:
+          tags: true
+          repo: smallstep/hello-mtls
 stages:
   - verify
   - name: version
     if: branch = master
   - name: publish
     if: tag IS present
-
 env:
   global:
-    secure: f6KVyeNGEx0eDj2ZPxmhLhOrC7JUBJV/XVKyf+6fJ/x5uH4tS9CSgybSyxmwM0gYo/Z/TB76mSvzdG1wy4aN+IKDLIsN7vEC2SQCnAVIxvR1LPKQJt9HiyWLtzN70x51rOmsL+nooRaUbQUWKMIFipjXtUlQZXTR/zZuJ0moJrOQwsf8lSwbzRsAUe35U+cX3vzgMRVUardAveNEVaklLdkfJ9fez5eM4vGz79JmeBejXUqGpN0+lS6nN3lJCUpimqpMkFrbJlkmrtMgN2zw2PcCQNdWsAi5o5BihKJLPXINCg8EgPrzZfpHWC8jSvRCRc4TQXXkmYoEFZsT8lhQXuvXFOmQHT29nb/kQbt2lP7RRinv/fJkkzmC47WLicWxZkkEYFYbq3cH9USLl7ikaWafuL0lhCKDE5s6scHU+CBlTt8tUnKqpgn1OCObGdn9UDJ2eUt3/12TezXHnbnPchctYpCOVolI20q0L6iATn0jV0xIdK5r7JDngKIhcd8E5+A8m9OfywpUIEEQ2ZL7Vdsi5/NFRhjQGcq3wKqDRgwMZkqhp/rAkuZ/b03G/VMHLznipAEJvdpgxQG35kpESh2neDx6tyY44jO1MfS1f/bVBvRSwQS/tIOeTOy5bnoDILSgvPIAhx45Rqchpm7B3EHoFGXtb/3Q3fvs2jVALB8=
+    - secure: f6KVyeNGEx0eDj2ZPxmhLhOrC7JUBJV/XVKyf+6fJ/x5uH4tS9CSgybSyxmwM0gYo/Z/TB76mSvzdG1wy4aN+IKDLIsN7vEC2SQCnAVIxvR1LPKQJt9HiyWLtzN70x51rOmsL+nooRaUbQUWKMIFipjXtUlQZXTR/zZuJ0moJrOQwsf8lSwbzRsAUe35U+cX3vzgMRVUardAveNEVaklLdkfJ9fez5eM4vGz79JmeBejXUqGpN0+lS6nN3lJCUpimqpMkFrbJlkmrtMgN2zw2PcCQNdWsAi5o5BihKJLPXINCg8EgPrzZfpHWC8jSvRCRc4TQXXkmYoEFZsT8lhQXuvXFOmQHT29nb/kQbt2lP7RRinv/fJkkzmC47WLicWxZkkEYFYbq3cH9USLl7ikaWafuL0lhCKDE5s6scHU+CBlTt8tUnKqpgn1OCObGdn9UDJ2eUt3/12TezXHnbnPchctYpCOVolI20q0L6iATn0jV0xIdK5r7JDngKIhcd8E5+A8m9OfywpUIEEQ2ZL7Vdsi5/NFRhjQGcq3wKqDRgwMZkqhp/rAkuZ/b03G/VMHLznipAEJvdpgxQG35kpESh2neDx6tyY44jO1MfS1f/bVBvRSwQS/tIOeTOy5bnoDILSgvPIAhx45Rqchpm7B3EHoFGXtb/3Q3fvs2jVALB8=
+    - secure: GgGX7LeIRKz2+1O8pLBx/Nc0bnvSm/QZ00vao1f4HuIYTCD3WX1xnig8tIbejrwzs+zlfLH6N45dRIM4JjOLhgctLVTHVnt20hw9pfWSUf+xBgfPjeBE/iaN8n6BPRyd3ZIWvhe3K8xzb+JbIbdMY/GGfdtJoWOLYNhM8dSY4PlkOARTViDRgN5AW0Pb0TpLc2/vG8CZ6mRfsEKJzWjGsKRxCPhrHwORkFxzZNqB1Fy7qfHqhQsfiyOLTmDcd5ENQskBRpl2E6acecYsIxeG+XEKQSKFpUezD/Y8Ls3bzHn/QSkQ6ubZKDHbQr/wYhXV2NHrdnrN18JKMcoiLa7+6YsNnmV3wohY9rr7mw5COdKJPpo8CT2tWa7M1cVMGvfRO4IUGAZgfLavib3sh2Gqj0vwBzUakVN8NAXKqTJyHDLCi6tQEn1t7LBueYBkcJVjVHldraYxIkX8jn2Ieq2SQwr3yS084oDeFP4Mf3ScIL+SzIPNQ4im3sAL4fIxh0t5Fwv/Q4YggF3fC1rBlFVhyGDiXyIBUedD57XG8ttumsN4IyTPzlPsspwPNzfl6uDbA7J2pFnEWLFfYOLnO5ZXvD2tZ6jJ/JSUw0WXsSINRqq6dDlhpWUBk0X6n9tgBxvvtFqMMbnXZkrBhtQ5DUw6rZ4en0xB2i9C773/JeQo5kk=
