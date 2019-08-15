@@ -1,8 +1,21 @@
 language: node_js
 node_js:
   - 10
-jobs:
-  include:
-    - stage: verify
-      script: yarn lint
-    - script: yarn test
+script:
+  - yarn lint
+  - yarn test
+deploy:
+  - provider: script
+    script:
+      - yarn version --patch
+      - git push --tags
+    on:
+      branch: master
+  - provider: npm
+    email: alan@smallstep.com
+    api_key:
+      secure: M/+TvQj31kw+nGNTF9yXcU75ewElZfR2eTgXOQ9jvPbLUVYQdYnqGT7CVvPPmkYILWZ2ww2lQ9qqNIh0Te5OP0pIMavmWy4yd++rGu3w4ppKnUWsSftsEYcPIR8b1YBV3cdLWeBqmSxANPsKZaxJqg+MhnCpd6FrGdXlX1jqRlmJV4citfaSptDkpWd4rnkDR/dHKqC24KCTA+XiwAKkPiA5VQELhdQI4bEg0bOkzQAcCLIovUHX7Aflj3WNQbqJW0W7nmomCug6p6O3oeVHeJFrOU4V7RYu0T8CfeMsmwTmZ2mubagyZgGynTtA6kdoCry0gE1YR8RZXf8nwqd3dQ8KruKrmjFpwnNh7NEAI9GBFat/beAumqyhP2ND1CyuHMHFYGN+EIoLqKyxgS+N9ndGbmDvVSsiSopr17uhNY4NQeLpbvY4WL/6lRsrcTOrWy1y7tFyrZ3gJ6nENNnXm0PNSygBcsybrqTlRmrPP0uTODCBBQUMdqYUwvBt1Ht2R4a6gUmZlE8OAClSMvf6o1pxB5gg9xcYKLfTlhieDXSpenn4f3lhPjhXiCSj1XOU43Arp704dJhU1sAuN94kSgV+fiR9YNRYHHGpEd1x/o6bOj4n8HdJkLzodiAznUwmO11kysL6dxs4Vm63CYmnL3loug2PLO0JlDv8DwdkV5Y=
+    on:
+      tags: true
+      repo: smallstep/hello-mtls
+    tag: next
