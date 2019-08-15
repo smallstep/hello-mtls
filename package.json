@@ -1,5 +1,6 @@
 {
   "name": "hello-mtls",
+  "version": "0.0.1",
   "author": "Smallstep",
   "repository": {
     "type": "git",
