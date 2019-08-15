@@ -1,11 +1,13 @@
 language: node_js
 node_js:
   - "10"
+
 jobs:
   include:
     - stage: verify
       script: "./ci/verify.sh"
-    - stage: version
+
+    - stage: publish
       script: "./ci/version.sh"
       deploy:
         provider: releases
@@ -14,19 +16,12 @@ jobs:
         on:
           branch: master
           repo: smallstep/hello-mtls
-    - stage: publish
-      deploy:
-        provider: script
-        script: "./ci/publish.sh"
-        on:
-          tags: true
-          repo: smallstep/hello-mtls
+
 stages:
   - verify
-  - name: version
-    if: branch = master AND tag IS NOT present
   - name: publish
-    if: tag IS present
+    if: branch = master
+
 env:
   global:
     - secure: f6KVyeNGEx0eDj2ZPxmhLhOrC7JUBJV/XVKyf+6fJ/x5uH4tS9CSgybSyxmwM0gYo/Z/TB76mSvzdG1wy4aN+IKDLIsN7vEC2SQCnAVIxvR1LPKQJt9HiyWLtzN70x51rOmsL+nooRaUbQUWKMIFipjXtUlQZXTR/zZuJ0moJrOQwsf8lSwbzRsAUe35U+cX3vzgMRVUardAveNEVaklLdkfJ9fez5eM4vGz79JmeBejXUqGpN0+lS6nN3lJCUpimqpMkFrbJlkmrtMgN2zw2PcCQNdWsAi5o5BihKJLPXINCg8EgPrzZfpHWC8jSvRCRc4TQXXkmYoEFZsT8lhQXuvXFOmQHT29nb/kQbt2lP7RRinv/fJkkzmC47WLicWxZkkEYFYbq3cH9USLl7ikaWafuL0lhCKDE5s6scHU+CBlTt8tUnKqpgn1OCObGdn9UDJ2eUt3/12TezXHnbnPchctYpCOVolI20q0L6iATn0jV0xIdK5r7JDngKIhcd8E5+A8m9OfywpUIEEQ2ZL7Vdsi5/NFRhjQGcq3wKqDRgwMZkqhp/rAkuZ/b03G/VMHLznipAEJvdpgxQG35kpESh2neDx6tyY44jO1MfS1f/bVBvRSwQS/tIOeTOy5bnoDILSgvPIAhx45Rqchpm7B3EHoFGXtb/3Q3fvs2jVALB8=
