@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const docsPath = path.resolve(__dirname, 'docs');
+const common = require('./common');
+
+const docsPath = path.resolve(__dirname, '../docs');
 const docs = fs.readdirSync(docsPath).filter(doc => doc !== 'LICENSE.txt');
 
 module.exports = {
@@ -13,7 +15,7 @@ module.exports = {
     }, {}),
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].js',
     chunkFilename: 'chunk-[name].js',
     library: 'hello-mtls',
@@ -33,24 +35,7 @@ module.exports = {
           extensions: ['.js', '.jsx'],
         },
       },
-      {
-        test: /config\.yaml$/,
-        include: [path.resolve('./docs')],
-        use: [
-          {
-            loader: path.resolve('./src/loaders/doc-loader'),
-          },
-        ],
-      },
-      {
-        test: /docs\.js$/,
-        include: [path.resolve('./src')],
-        use: [
-          {
-            loader: path.resolve('./src/loaders/docs-list-loader'),
-          },
-        ],
-      },
+      ...common.module.rules,
     ],
   },
   externals: {

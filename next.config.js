@@ -1,28 +1,10 @@
 const path = require('path');
 
+const common = require('./webpack/common');
+
 module.exports = {
   webpack: (config, { dev }) => {
-    config.module.rules = [
-      ...config.module.rules,
-      {
-        test: /config\.yaml$/,
-        include: [path.resolve('./docs')],
-        use: [
-          {
-            loader: path.resolve('./src/loaders/doc-loader'),
-          },
-        ],
-      },
-      {
-        test: /docs\.js$/,
-        include: [path.resolve('./src')],
-        use: [
-          {
-            loader: path.resolve('./src/loaders/docs-list-loader'),
-          },
-        ],
-      },
-    ];
+    config.module.rules = [...config.module.rules, ...common.module.rules];
     return config;
   },
 };

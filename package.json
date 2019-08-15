@@ -12,7 +12,7 @@
     "start": "next",
     "test": "jest",
     "lint": "prettier --check 'src/**/*.{js,jsx}'",
-    "dist": "webpack --config webpack.config.dist.js --mode production"
+    "dist": "webpack --config webpack/config.dist.js --mode production"
   },
   "devDependencies": {
     "ajv": "^6.10.2",
