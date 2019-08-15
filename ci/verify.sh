@@ -1,3 +1,4 @@
-#!/bin/env bash
+#!/bin/bash
+
 yarn lint
 yarn test
