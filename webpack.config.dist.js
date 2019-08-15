@@ -18,6 +18,7 @@ module.exports = {
     chunkFilename: 'chunk-[name].js',
     library: 'hello-mtls',
     libraryTarget: 'umd',
+    umdNamedDefine: true,
     globalObject: "typeof self !== 'undefined' ? self : this",
   },
   module: {
