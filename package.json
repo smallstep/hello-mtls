@@ -2,6 +2,7 @@
   "name": "hello-mtls",
   "version": "0.0.1",
   "author": "Smallstep",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/smallstep/hello-mtls.git"
