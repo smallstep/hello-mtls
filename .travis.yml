@@ -1,26 +1,31 @@
 language: node_js
 node_js:
-  - 10
+- 10
 jobs:
   include:
-    - stage: verify
-      script:
-        - yarn lint
-        - yarn test
-    - stage: version
-      script:
-        - yarn version --patch
-        - git push --tags
+  - stage: verify
+    script:
+    - yarn lint
+    - yarn test
+  - stage: version
+    script:
+    - yarn version --patch
 stages:
   - verify
   - name: version
     if: branch = master
 deploy:
-  provider: npm
-  email: alan@smallstep.com
-  api_key:
-    secure: M/+TvQj31kw+nGNTF9yXcU75ewElZfR2eTgXOQ9jvPbLUVYQdYnqGT7CVvPPmkYILWZ2ww2lQ9qqNIh0Te5OP0pIMavmWy4yd++rGu3w4ppKnUWsSftsEYcPIR8b1YBV3cdLWeBqmSxANPsKZaxJqg+MhnCpd6FrGdXlX1jqRlmJV4citfaSptDkpWd4rnkDR/dHKqC24KCTA+XiwAKkPiA5VQELhdQI4bEg0bOkzQAcCLIovUHX7Aflj3WNQbqJW0W7nmomCug6p6O3oeVHeJFrOU4V7RYu0T8CfeMsmwTmZ2mubagyZgGynTtA6kdoCry0gE1YR8RZXf8nwqd3dQ8KruKrmjFpwnNh7NEAI9GBFat/beAumqyhP2ND1CyuHMHFYGN+EIoLqKyxgS+N9ndGbmDvVSsiSopr17uhNY4NQeLpbvY4WL/6lRsrcTOrWy1y7tFyrZ3gJ6nENNnXm0PNSygBcsybrqTlRmrPP0uTODCBBQUMdqYUwvBt1Ht2R4a6gUmZlE8OAClSMvf6o1pxB5gg9xcYKLfTlhieDXSpenn4f3lhPjhXiCSj1XOU43Arp704dJhU1sAuN94kSgV+fiR9YNRYHHGpEd1x/o6bOj4n8HdJkLzodiAznUwmO11kysL6dxs4Vm63CYmnL3loug2PLO0JlDv8DwdkV5Y=
-  on:
-    tags: true
-    repo: smallstep/hello-mtls
-  tag: next
+  - provider: releases
+    api_key:
+      secure: pr6VUn+4XE1oJ/FJyAjasPCwHLgoqbAPGITB+fPPQGpfHVkVY3sjpMwI7oHht2V/3sPMs4xTsjE0hZ99l28kZLACLK4mNTFSZVEiTTowFp6HL/KNoglTvBqSBCfaQwshyDw4NdJmD4HbpDbBW4HgJzXtGIHlgOj/bFQe7A9GdLr1CMZDEuSoFsPzxinWWTzcJSC+4Oo5akZUHDVev5YBxq2193U+n7tWatdaEqzV3BFdtI0zEUvxW1wFvSh+tDHvhvhZaWFralbsQ7FLoluveF/uIMIM6/xQFQ9IW39hc6bjEFh62cLTLJ+5QEaxx09yxm2c7nFDWN2FonqzsL7/va5ZJG2/wuw3PNfcfQSeTgshiBhcy95UYvbnut3l4N0DIbDA4MYAXKunnjv462iXJyjZrYZRH8jmRUkq+gABNnhoUp1W59n4W6D/fLkkhMROQ4Gm3w9kXuLIzWL+8quHn4+cqWMIijL3dSkjhvxg/Rtdz0Kpj2bx+XXilkl0AbT8drilWqhLiYouZJTv5mKdeRRFkW5YzeBjaKWp/5NIroDmjT4KJVLwt2Eo9xdZPZB7+g1jW18r6+5hSxOIP+JPkCaAU3aJun8SruTpYXTr5GrfsBaMOVnXidUZmwEcJv9YXXY9yi1+K8vRtOhtVV3V+g2+f5+V9FAtxUbUvvU7iOw=
+    on:
+      branch: master
+      repo: smallstep/hello-mtls
+  - provider: npm
+    email: alan@smallstep.com
+    api_key:
+      secure: M/+TvQj31kw+nGNTF9yXcU75ewElZfR2eTgXOQ9jvPbLUVYQdYnqGT7CVvPPmkYILWZ2ww2lQ9qqNIh0Te5OP0pIMavmWy4yd++rGu3w4ppKnUWsSftsEYcPIR8b1YBV3cdLWeBqmSxANPsKZaxJqg+MhnCpd6FrGdXlX1jqRlmJV4citfaSptDkpWd4rnkDR/dHKqC24KCTA+XiwAKkPiA5VQELhdQI4bEg0bOkzQAcCLIovUHX7Aflj3WNQbqJW0W7nmomCug6p6O3oeVHeJFrOU4V7RYu0T8CfeMsmwTmZ2mubagyZgGynTtA6kdoCry0gE1YR8RZXf8nwqd3dQ8KruKrmjFpwnNh7NEAI9GBFat/beAumqyhP2ND1CyuHMHFYGN+EIoLqKyxgS+N9ndGbmDvVSsiSopr17uhNY4NQeLpbvY4WL/6lRsrcTOrWy1y7tFyrZ3gJ6nENNnXm0PNSygBcsybrqTlRmrPP0uTODCBBQUMdqYUwvBt1Ht2R4a6gUmZlE8OAClSMvf6o1pxB5gg9xcYKLfTlhieDXSpenn4f3lhPjhXiCSj1XOU43Arp704dJhU1sAuN94kSgV+fiR9YNRYHHGpEd1x/o6bOj4n8HdJkLzodiAznUwmO11kysL6dxs4Vm63CYmnL3loug2PLO0JlDv8DwdkV5Y=
+    on:
+      tags: true
+      repo: smallstep/hello-mtls
+    tag: next
