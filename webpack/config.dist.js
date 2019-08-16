@@ -20,7 +20,7 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].js',
     chunkFilename: 'hello-mtls-[name].js',
-    library: 'hello-mtls',
+    library: 'HellomTLS',
     libraryTarget: 'umd',
     umdNamedDefine: true,
     globalObject: "typeof self !== 'undefined' ? self : this",
