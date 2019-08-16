@@ -41,8 +41,9 @@ module.exports = {
     ],
   },
   externals: {
-    React: 'react',
-    ReactDOM: 'react-dom',
-    Prism: 'prismjs',
+    react: 'react',
+    'react-dom': 'react-dom',
+    prismjs: 'prismjs',
+    'markdown-it': 'markdown-it',
   },
 };

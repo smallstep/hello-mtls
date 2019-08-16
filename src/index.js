@@ -1,4 +1,4 @@
-import { listDocs, getDoc, parseTemplate } from './utils';
+import { listDocs, parseTemplate } from './utils';
 
-export { listDocs, getDoc, parseTemplate };
-export default { listDocs, getDoc, parseTemplate };
+export { listDocs, parseTemplate };
+export default { listDocs, parseTemplate };

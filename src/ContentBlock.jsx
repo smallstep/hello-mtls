@@ -5,7 +5,20 @@ import markdownit from 'markdown-it';
 
 import { parseTemplate } from './utils';
 
-const toHTML = (content, data = {}, highlight = true) => {
+const ContentBlock = ({ content, data, highlight }) => {
+  const html = ContentBlock.toHTML(content, data, highlight);
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+};
+
+ContentBlock.parseLanguages = content => {
+  const md = new markdownit();
+  return md
+    .parse(content)
+    .filter(token => token.type === 'fence')
+    .map(token => token.info);
+};
+
+ContentBlock.toHTML = (content, data = {}, highlight = false) => {
   const md = new markdownit({
     highlight: (str, lang) => {
       if (highlight && lang) {
@@ -23,35 +36,18 @@ const toHTML = (content, data = {}, highlight = true) => {
   });
 
   const markdown = parseTemplate(content, data);
-
-  if (highlight) {
-    const languageImports = md
-      .parse(markdown)
-      .filter(token => token.type === 'fence')
-      .map(token => import(`prismjs/components/prism-${token.info}`));
-    return Promise.all(languageImports).then(() => md.render(markdown));
-  }
-
   return md.render(markdown);
-};
-
-const ContentBlock = ({ content, data }) => {
-  const [html, setHtml] = useState(toHTML(content, data, false));
-
-  useEffect(() => {
-    toHTML(content, data).then(result => setHtml(result));
-  }, [content, data]);
-
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
 ContentBlock.propTypes = {
   content: PropTypes.string.isRequired,
   data: PropTypes.object,
+  highlight: PropTypes.bool,
 };
 
 ContentBlock.defaultProps = {
   data: {},
+  highlight: false,
 };
 
 export default ContentBlock;

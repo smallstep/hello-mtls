@@ -2,9 +2,7 @@ import template from 'lodash.template';
 
 import docs from './docs';
 
-export const listDocs = () => Promise.resolve(docs);
-export const getDoc = name =>
-  import(`../docs/${name}/config.yaml`).then(mod => mod.default);
+export const listDocs = () => docs;
 
 export const parseTemplate = (content, data = {}) => {
   const parse = template(content);

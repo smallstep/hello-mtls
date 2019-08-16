@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { listDocs } from '../src/utils';
 
-const Page = ({ docs }) => (
+const Page = () => (
   <div>
     <h1>Docs</h1>
     <ul>
-      {docs.map(doc => (
+      {listDocs().map(doc => (
         <li key={doc}>
           <Link href="/docs/[doc]" as={`/docs/${doc}`}>
             <a>{doc}</a>
@@ -15,7 +15,5 @@ const Page = ({ docs }) => (
     </ul>
   </div>
 );
-
-Page.getInitialProps = () => listDocs().then(docs => ({ docs }));
 
 export default Page;

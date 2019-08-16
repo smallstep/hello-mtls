@@ -21,6 +21,7 @@
     "image-type": "^4.1.0",
     "jest": "^24.8.0",
     "js-yaml": "^3.13.1",
+    "lodash.flatmap": "^4.5.0",
     "lodash.merge": "^4.6.2",
     "markdown-it": "^9.1.0",
     "next": "^9.0.3",

@@ -1,20 +1,38 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import template from 'lodash/template';
+import markdownit from 'markdown-it';
+import flatMap from 'lodash.flatmap';
 
 import topics from '../../src/topics.json';
 import ContentBlock from '../../src/ContentBlock';
-import { getDoc } from '../../src/utils';
 
 import prismCss from 'raw-loader!prismjs/themes/prism-tomorrow.css';
 
+const md = new markdownit();
+
 const Page = () => {
   const [doc, setDoc] = useState(null);
+  const [highlight, setHighlight] = useState(false);
+
   const router = useRouter();
+
+  async function loadDoc(name) {
+    const mod = await import(`../../docs/${name}/config.yaml`);
+    const doc = mod.default;
+    setDoc(doc);
+
+    const contents = Object.values(doc.topics).map(topic => topic.content);
+    const languageImports = flatMap(contents, content =>
+      ContentBlock.parseLanguages(content)
+    ).map(lang => import(`prismjs/components/prism-${lang}`));
+    await Promise.all(languageImports);
+    setHighlight(true);
+  }
 
   useEffect(() => {
     if (router.query.doc) {
-      getDoc(router.query.doc).then(doc => setDoc(doc));
+      loadDoc(router.query.doc);
     }
   }, [router.query.doc]);
 
@@ -36,7 +54,10 @@ const Page = () => {
           <div key={topic.key}>
             <h2>{topic.name}</h2>
             {'content' in doc.topics[topic.key] ? (
-              <ContentBlock content={doc.topics[topic.key].content} />
+              <ContentBlock
+                content={doc.topics[topic.key].content}
+                highlight={highlight}
+              />
             ) : (
               'No content'
             )}
