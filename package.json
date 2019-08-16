@@ -7,12 +7,12 @@
     "type": "git",
     "url": "git+https://github.com/smallstep/hello-mtls.git"
   },
-  "main": "./dist/index.js",
+  "main": "./index.js",
   "scripts": {
     "start": "next",
     "test": "jest",
     "lint": "prettier --check 'src/**/*.{js,jsx}'",
-    "dist": "webpack --config webpack/config.dist.js --mode production"
+    "dist": "webpack --config webpack/config.dist.js --mode production && cp package.json README.md LICENSE.txt ./dist"
   },
   "devDependencies": {
     "ajv": "^6.10.2",
