@@ -5,9 +5,11 @@ import markdownit from 'markdown-it';
 
 import { parseTemplate } from './utils';
 
-const ContentBlock = ({ content, data, highlight }) => {
+const ContentBlock = ({ content, data, highlight, className }) => {
   const html = ContentBlock.toHTML(content, data, highlight);
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  return (
+    <div className={className} dangerouslySetInnerHTML={{ __html: html }} />
+  );
 };
 
 ContentBlock.parseLanguages = content => {
@@ -43,11 +45,13 @@ ContentBlock.propTypes = {
   content: PropTypes.string.isRequired,
   data: PropTypes.object,
   highlight: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 ContentBlock.defaultProps = {
   data: {},
   highlight: false,
+  className: '',
 };
 
 export default ContentBlock;
