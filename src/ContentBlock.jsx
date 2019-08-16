@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Prism from 'prismjs';
 import markdownit from 'markdown-it';
+
+let Prism;
+try {
+  Prism = require('prismjs');
+} catch (e) {}
 
 import { parseTemplate } from './utils';
 
@@ -23,12 +27,18 @@ ContentBlock.parseLanguages = content => {
 ContentBlock.toHTML = (content, data = {}, highlight = false) => {
   const md = new markdownit({
     highlight: (str, lang) => {
-      if (highlight && lang) {
+      if (highlight && Prism && lang) {
         return `<pre class="language-${lang}"><code>${Prism.highlight(
           str,
           Prism.languages[lang],
           lang
         )}</code></pre>`;
+      }
+
+      if (highlight && !Prism) {
+        console.log(
+          "Prism.js could not be found, but you've attempted to enable syntax highlighting. Are you sure it's installed in your project dependencies?"
+        );
       }
 
       return `<pre class="language-${lang}"><code>${md.utils.escapeHtml(
