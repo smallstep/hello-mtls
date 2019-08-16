@@ -10,4 +10,11 @@ const App = ({ Component, pageProps }) => (
   </div>
 );
 
+App.getInitialProps = async ({ Component, ctx }) => {
+  const pageProps = Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {};
+  return { pageProps };
+};
+
 export default App;

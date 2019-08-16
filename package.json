@@ -21,6 +21,8 @@
     "image-type": "^4.1.0",
     "jest": "^24.8.0",
     "js-yaml": "^3.13.1",
+    "lodash.merge": "^4.6.2",
+    "markdown-it": "^9.1.0",
     "next": "^9.0.3",
     "prettier": "^1.18.2",
     "prismjs": "^1.17.1",
@@ -32,10 +34,10 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
-    "lodash": "^4.17.15",
-    "markdown-it": "^9.1.0"
+    "lodash.template": "^4.5.0"
   },
   "peerDependencies": {
+    "markdown-it": "^9.1.0",
     "prismjs": "^1.17.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"

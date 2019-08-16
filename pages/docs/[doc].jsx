@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 import template from 'lodash/template';
 
 import topics from '../../src/topics.json';
-import Content from '../../src/Content';
+import ContentBlock from '../../src/ContentBlock';
+import { getDoc } from '../../src/utils';
 
 import prismCss from 'raw-loader!prismjs/themes/prism-tomorrow.css';
 
@@ -12,13 +13,9 @@ const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
-    async function updateDoc() {
-      if (router.query.doc) {
-        const mod = await import(`../../docs/${router.query.doc}/config.yaml`);
-        setDoc(mod.default);
-      }
+    if (router.query.doc) {
+      getDoc(router.query.doc).then(doc => setDoc(doc));
     }
-    updateDoc();
   }, [router.query.doc]);
 
   if (doc === null) {
@@ -39,7 +36,7 @@ const Page = () => {
           <div key={topic.key}>
             <h2>{topic.name}</h2>
             {'content' in doc.topics[topic.key] ? (
-              <Content content={doc.topics[topic.key].content} />
+              <ContentBlock content={doc.topics[topic.key].content} />
             ) : (
               'No content'
             )}

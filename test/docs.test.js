@@ -7,7 +7,7 @@ import imageType from 'image-type';
 import sizeOf from 'image-size';
 
 import topics from '../src/topics';
-import { toHTML } from '../src/utils';
+import { parseTemplate } from '../src/utils';
 
 const docsPath = path.resolve(__dirname, '../docs');
 const docs = fs.readdirSync(docsPath).filter(name => name !== 'LICENSE.txt');
@@ -89,7 +89,7 @@ docs.forEach(name => {
 });
 
 docs.forEach(name => {
-  test(`${name}: contains valid markdown topics`, () => {
+  test(`${name}: contains valid markdown templates`, () => {
     topics.forEach(topic => {
       const filepath = path.resolve(
         docsPath,
@@ -107,7 +107,7 @@ docs.forEach(name => {
       }
 
       try {
-        toHTML(source);
+        parseTemplate(source);
       } catch (e) {
         fail(`${topic.key}.md: ${e}`);
       }

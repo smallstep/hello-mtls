@@ -7,8 +7,10 @@ const docsPath = path.resolve(__dirname, '../docs');
 const docs = fs.readdirSync(docsPath).filter(doc => doc !== 'LICENSE.txt');
 
 module.exports = {
+  devtool: 'source-map',
   entry: {
     index: './src/index.js',
+    ContentBlock: './src/ContentBlock.jsx',
     ...docs.reduce((obj, doc) => {
       obj[`docs/${doc}`] = `./docs/${doc}/config.yaml`;
       return obj;
@@ -17,7 +19,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].js',
-    chunkFilename: 'chunk-[name].js',
+    chunkFilename: 'hello-mtls-[name].js',
     library: 'hello-mtls',
     libraryTarget: 'umd',
     umdNamedDefine: true,

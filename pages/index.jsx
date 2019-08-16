@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import docs from '../src/docs';
+import { listDocs } from '../src/utils';
 
-const Page = () => (
+const Page = ({ docs }) => (
   <div>
     <h1>Docs</h1>
     <ul>
@@ -15,5 +15,7 @@ const Page = () => (
     </ul>
   </div>
 );
+
+Page.getInitialProps = () => listDocs().then(docs => ({ docs }));
 
 export default Page;

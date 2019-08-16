@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
-const merge = require('lodash/merge');
+const merge = require('lodash.merge');
 const topics = require('../topics.json');
 
 module.exports = function(source) {
