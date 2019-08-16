@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 git config --global user.email "alan@smallstep.com"
 git config --global user.name "Alan Thomas"
 git config --global push.default matching
