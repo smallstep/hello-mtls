@@ -1,6 +1,5 @@
 In your Nginx configuration's server block, enable `ssl` for the listening socket and specify the locations of the server's certificate and private key. We'll also tell Nginx to use TLS protocols and our preferred ciphers:
 
-
 ```nginx
 server {
     listen              443 ssl;
