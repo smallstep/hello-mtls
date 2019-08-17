@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import template from 'lodash/template';
 import markdownit from 'markdown-it';
-import flatMap from 'lodash.flatmap';
 
 import topics from '../../src/topics.json';
 import ContentBlock from '../../src/ContentBlock';
@@ -18,14 +16,21 @@ const Page = () => {
   const router = useRouter();
 
   async function loadDoc(name) {
+    // import the specified doc and load it into state
     const mod = await import(`../../docs/${name}/config.yaml`);
     const doc = mod.default;
     setDoc(doc);
 
+    // parse all the languages from the markdown content and load their prism
+    // language modules
     const contents = Object.values(doc.topics).map(topic => topic.content);
-    const languageImports = flatMap(contents, content =>
-      ContentBlock.parseLanguages(content)
-    ).map(lang => import(`prismjs/components/prism-${lang}`));
+    const languageImports = ContentBlock.parseLanguages(contents).map(lang =>
+      import(`prismjs/components/prism-${lang}`).catch(() =>
+        console.log(`"${lang}" is not a valid Prism.js language.`)
+      )
+    );
+
+    // wait for language module imports, then enable highlighting
     await Promise.all(languageImports);
     setHighlight(true);
   }
