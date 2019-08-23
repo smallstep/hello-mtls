@@ -10,12 +10,22 @@ jobs:
     - stage: publish
       script: "./ci/publish.sh"
       deploy:
-        provider: releases
-        api_key:
-          secure: pr6VUn+4XE1oJ/FJyAjasPCwHLgoqbAPGITB+fPPQGpfHVkVY3sjpMwI7oHht2V/3sPMs4xTsjE0hZ99l28kZLACLK4mNTFSZVEiTTowFp6HL/KNoglTvBqSBCfaQwshyDw4NdJmD4HbpDbBW4HgJzXtGIHlgOj/bFQe7A9GdLr1CMZDEuSoFsPzxinWWTzcJSC+4Oo5akZUHDVev5YBxq2193U+n7tWatdaEqzV3BFdtI0zEUvxW1wFvSh+tDHvhvhZaWFralbsQ7FLoluveF/uIMIM6/xQFQ9IW39hc6bjEFh62cLTLJ+5QEaxx09yxm2c7nFDWN2FonqzsL7/va5ZJG2/wuw3PNfcfQSeTgshiBhcy95UYvbnut3l4N0DIbDA4MYAXKunnjv462iXJyjZrYZRH8jmRUkq+gABNnhoUp1W59n4W6D/fLkkhMROQ4Gm3w9kXuLIzWL+8quHn4+cqWMIijL3dSkjhvxg/Rtdz0Kpj2bx+XXilkl0AbT8drilWqhLiYouZJTv5mKdeRRFkW5YzeBjaKWp/5NIroDmjT4KJVLwt2Eo9xdZPZB7+g1jW18r6+5hSxOIP+JPkCaAU3aJun8SruTpYXTr5GrfsBaMOVnXidUZmwEcJv9YXXY9yi1+K8vRtOhtVV3V+g2+f5+V9FAtxUbUvvU7iOw=
-        on:
-          branch: master
-          repo: smallstep/hello-mtls
+        - provider: releases
+          api_key:
+            secure: pr6VUn+4XE1oJ/FJyAjasPCwHLgoqbAPGITB+fPPQGpfHVkVY3sjpMwI7oHht2V/3sPMs4xTsjE0hZ99l28kZLACLK4mNTFSZVEiTTowFp6HL/KNoglTvBqSBCfaQwshyDw4NdJmD4HbpDbBW4HgJzXtGIHlgOj/bFQe7A9GdLr1CMZDEuSoFsPzxinWWTzcJSC+4Oo5akZUHDVev5YBxq2193U+n7tWatdaEqzV3BFdtI0zEUvxW1wFvSh+tDHvhvhZaWFralbsQ7FLoluveF/uIMIM6/xQFQ9IW39hc6bjEFh62cLTLJ+5QEaxx09yxm2c7nFDWN2FonqzsL7/va5ZJG2/wuw3PNfcfQSeTgshiBhcy95UYvbnut3l4N0DIbDA4MYAXKunnjv462iXJyjZrYZRH8jmRUkq+gABNnhoUp1W59n4W6D/fLkkhMROQ4Gm3w9kXuLIzWL+8quHn4+cqWMIijL3dSkjhvxg/Rtdz0Kpj2bx+XXilkl0AbT8drilWqhLiYouZJTv5mKdeRRFkW5YzeBjaKWp/5NIroDmjT4KJVLwt2Eo9xdZPZB7+g1jW18r6+5hSxOIP+JPkCaAU3aJun8SruTpYXTr5GrfsBaMOVnXidUZmwEcJv9YXXY9yi1+K8vRtOhtVV3V+g2+f5+V9FAtxUbUvvU7iOw=
+          on:
+            branch: master
+            repo: smallstep/hello-mtls
+
+        - provider: s3
+          access_key_id: AKIA3YASNKGXTQIGAU5E
+          secret_access_key:
+            secure: uNZFxRvgDB9H+kZN7JGGP1P1DB2rMLfn7OGTHdcXqsbGSnofpuLXJFuxE7xMGi44w2OfCCNBmc4Ur+T75AaVip7JY/OZE0wjXAmgHNfWvuP7SAg6pbbxvT9DfrdAjoTOzHqePNWsC7HAl/429Turq5kz7mz4Q9U96+Dli1XaPn/CNkWLEduhpMlzcYxVqkVfntVLpIbQSUvegcv50jZUvMdba9maHojvWPopDLiWkgyPD/7qpgkol5+TN9MqP7VxjCjvB/e7KeYcOkg/C/L9j1h282yfmJPRYi1Zp9hgOx0W89L5UNUWYfZSJXjW8dj6APo1Ldl6ufeTYJLs24RkxX0ns88HCQHq3/1rCabZPPgSlImntjN620oi3Sa4fOW9lul+VrApDdKRvotTdzsA3FcaXI9mdzNTc2IZGJp6iRsw+nZmW8zfw65o7yPSIA/V2I/NYmpPZH6EqKdukhk2Psgd/3yVLoDvDYuStxrno933tWWbNT/JowX/FnqF0R0Ly5i1Y1zFPGQsoJh8vV2Hk1fZL1SNOnfMcKKdt0vBeyFZXndbS8ovjiVrCx5njjMBFCciKgDdW89qIaVia4+rH2VTxPX3jOZnvaSirmbByhA+bNbf6+3luOcuYdKE1VakgCTZVU53/u3Vu/tfDOz5jt+KYMvlTA/6do6PvJRILDY=
+          bucket: assets.hellomtls.com
+          local-dir: assets
+          acl: public_read
+          on:
+            repo: smallstep/hello-mtls
 
 stages:
   - verify
