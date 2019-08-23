@@ -4,15 +4,28 @@ import { listDocs } from '../src/utils';
 const Page = () => (
   <div>
     <h1>Docs</h1>
-    <ul>
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {listDocs().map(doc => (
-        <li key={doc}>
-          <Link href="/docs/[doc]" as={`/docs/${doc}`}>
-            <a>{doc}</a>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            textAlign: 'center',
+            flexBasis: '20%',
+            padding: '20px',
+            margin: '20px',
+          }}
+          key={doc.key}
+        >
+          <Link href="/docs/[doc]" as={`/docs/${doc.key}`}>
+            <a>
+              <img style={{ width: '100%' }} src={doc.logo} alt={doc.name} />
+              {doc.name}
+            </a>
           </Link>
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   </div>
 );
 

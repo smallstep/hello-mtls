@@ -48,7 +48,18 @@ const Page = () => {
   return (
     <div>
       <style dangerouslySetInnerHTML={{ __html: prismCss.toString() }} />
-      <h1>{doc.name}</h1>
+      <h1>
+        <img
+          src={doc.logo}
+          alt={doc.name}
+          style={{
+            width: '40px',
+            verticalAlign: 'middle',
+            marginRight: '10px',
+          }}
+        />
+        {doc.name}
+      </h1>
 
       {topics.map(topic => {
         if (!doc.topics || !doc.topics[topic.key]) {
