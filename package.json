@@ -12,7 +12,7 @@
     "start": "next",
     "test": "jest",
     "lint": "prettier --check 'src/**/*.{js,jsx}'",
-    "dist": "webpack --config webpack/config.dist.js --mode production && cp package.json README.md LICENSE.txt ./dist"
+    "dist": "webpack --config webpack/config.dist.js && cp package.json README.md LICENSE.txt ./dist"
   },
   "devDependencies": {
     "ajv": "^6.10.2",
@@ -21,6 +21,7 @@
     "image-type": "^4.1.0",
     "jest": "^24.8.0",
     "js-yaml": "^3.13.1",
+    "loader-utils": "^1.2.3",
     "lodash.merge": "^4.6.2",
     "markdown-it": "^9.1.0",
     "next": "^9.0.3",

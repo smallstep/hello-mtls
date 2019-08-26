@@ -2,11 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 const merge = require('lodash.merge');
-const topics = require('../topics.json');
+const { getOptions } = require('loader-utils');
 
+const topics = require('../topics.json');
 const { loadLogo } = require('./utils');
 
 module.exports = function(source) {
+  const options = getOptions(this);
   const config = yaml.safeLoad(source);
 
   const logoPath = path.resolve(this.context, 'logo.png');
@@ -27,7 +29,7 @@ module.exports = function(source) {
 
   const out = {
     ...config,
-    logo: loadLogo(logoPath),
+    logo: loadLogo(logoPath, this.mode, options.asset_url),
     topics: merge(contentTopics, config.topics),
   };
 

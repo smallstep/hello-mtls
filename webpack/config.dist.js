@@ -7,6 +7,7 @@ const docsPath = path.resolve(__dirname, '../docs');
 const docs = fs.readdirSync(docsPath).filter(doc => doc !== 'LICENSE.txt');
 
 module.exports = {
+  mode: 'production',
   devtool: 'source-map',
   entry: {
     index: './src/index.js',

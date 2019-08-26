@@ -1,10 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const { getOptions } = require('loader-utils');
 
 const { loadLogo } = require('./utils');
 
 module.exports = function() {
+  const options = getOptions(this);
   const docsPath = path.resolve(this.context, '../docs');
   const docNames = fs
     .readdirSync(docsPath)
@@ -22,7 +24,7 @@ module.exports = function() {
     return {
       key,
       name: yaml.safeLoad(config).name,
-      logo: loadLogo(logoPath),
+      logo: loadLogo(logoPath, this.mode, options.asset_url),
     };
   });
   return `export default ${JSON.stringify(docs)};`;

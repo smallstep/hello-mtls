@@ -1,5 +1,7 @@
 const path = require('path');
 
+const ASSET_URL = 'https://d2m06gn7cjwia2.cloudfront.net';
+
 module.exports = {
   module: {
     rules: [
@@ -9,6 +11,7 @@ module.exports = {
         use: [
           {
             loader: path.resolve('./src/loaders/doc-loader'),
+            options: { asset_url: ASSET_URL },
           },
         ],
       },
@@ -18,6 +21,7 @@ module.exports = {
         use: [
           {
             loader: path.resolve('./src/loaders/docs-list-loader'),
+            options: { asset_url: ASSET_URL },
           },
         ],
       },
