@@ -23,6 +23,7 @@ jobs:
           secret_access_key:
             secure: uNZFxRvgDB9H+kZN7JGGP1P1DB2rMLfn7OGTHdcXqsbGSnofpuLXJFuxE7xMGi44w2OfCCNBmc4Ur+T75AaVip7JY/OZE0wjXAmgHNfWvuP7SAg6pbbxvT9DfrdAjoTOzHqePNWsC7HAl/429Turq5kz7mz4Q9U96+Dli1XaPn/CNkWLEduhpMlzcYxVqkVfntVLpIbQSUvegcv50jZUvMdba9maHojvWPopDLiWkgyPD/7qpgkol5+TN9MqP7VxjCjvB/e7KeYcOkg/C/L9j1h282yfmJPRYi1Zp9hgOx0W89L5UNUWYfZSJXjW8dj6APo1Ldl6ufeTYJLs24RkxX0ns88HCQHq3/1rCabZPPgSlImntjN620oi3Sa4fOW9lul+VrApDdKRvotTdzsA3FcaXI9mdzNTc2IZGJp6iRsw+nZmW8zfw65o7yPSIA/V2I/NYmpPZH6EqKdukhk2Psgd/3yVLoDvDYuStxrno933tWWbNT/JowX/FnqF0R0Ly5i1Y1zFPGQsoJh8vV2Hk1fZL1SNOnfMcKKdt0vBeyFZXndbS8ovjiVrCx5njjMBFCciKgDdW89qIaVia4+rH2VTxPX3jOZnvaSirmbByhA+bNbf6+3luOcuYdKE1VakgCTZVU53/u3Vu/tfDOz5jt+KYMvlTA/6do6PvJRILDY=
           bucket: assets.hellomtls.com
+          region: us-west-1
           local-dir: assets
           acl: public_read
           on:
