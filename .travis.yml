@@ -16,6 +16,7 @@ jobs:
           on:
             branch: master
             repo: smallstep/hello-mtls
+          skip_cleanup: true
 
         - provider: s3
           access_key_id: AKIA3YASNKGXTQIGAU5E
@@ -26,6 +27,7 @@ jobs:
           acl: public_read
           on:
             repo: smallstep/hello-mtls
+          skip_cleanup: true
 
 stages:
   - verify
