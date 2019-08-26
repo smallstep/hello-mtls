@@ -7,14 +7,16 @@ const loadLogo = (filepath, mode, asset_url) => {
     .substr(projectRoot.length)
     .match(/^\/docs\/([^/]+)\/logo\.png$/)[1];
 
-  if (mode === 'production') {
-    return `${asset_url}/${key}.png`;
-  }
-
   let content;
   try {
     content = fs.readFileSync(filepath);
+    if (mode === 'production') {
+      return `${asset_url}/${key}.png`;
+    }
   } catch (e) {
+    if (mode === 'production') {
+      return `${asset_url}/dummy.png`;
+    }
     const dummyPath = path.resolve(__dirname, '../graphics/dummy.png');
     content = fs.readFileSync(dummyPath);
   }
