@@ -1,17 +1,41 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import markdownit from 'markdown-it';
+import Prism from 'prismjs';
 
 import topics from '../../src/topics.json';
 import ContentBlock from '../../src/ContentBlock';
 
 import prismCss from 'raw-loader!prismjs/themes/prism-tomorrow.css';
 
-const md = new markdownit();
+const HighlightContext = React.createContext([]);
+
+const CodeBlock = ({ value, language }) => {
+  const className = `language-${language}`;
+  let html = value;
+
+  return (
+    <HighlightContext.Consumer>
+      {highlights => {
+        if (highlights.includes(language)) {
+          html = Prism.highlight(value, Prism.languages[language]);
+        }
+
+        return (
+          <pre className={className}>
+            <code
+              className={className}
+              dangerouslySetInnerHTML={{ __html: html }}
+            />
+          </pre>
+        );
+      }}
+    </HighlightContext.Consumer>
+  );
+};
 
 const Page = () => {
   const [doc, setDoc] = useState(null);
-  const [highlight, setHighlight] = useState(false);
+  const [highlights, setHighlights] = useState([]);
 
   const router = useRouter();
 
@@ -25,14 +49,10 @@ const Page = () => {
     // language modules
     const contents = Object.values(doc.topics).map(topic => topic.content);
     const languageImports = ContentBlock.parseLanguages(contents).map(lang =>
-      import(`prismjs/components/prism-${lang}`).catch(() =>
-        console.log(`"${lang}" is not a valid Prism.js language.`)
-      )
+      import(`prismjs/components/prism-${lang}`)
+        .then(() => setHighlights(highlights.concat([lang])))
+        .catch(() => console.log(`"${lang}" is not a valid Prism.js language.`))
     );
-
-    // wait for language module imports, then enable highlighting
-    await Promise.all(languageImports);
-    setHighlight(true);
   }
 
   useEffect(() => {
@@ -70,10 +90,12 @@ const Page = () => {
           <div key={topic.key}>
             <h2>{topic.name}</h2>
             {'content' in doc.topics[topic.key] ? (
-              <ContentBlock
-                content={doc.topics[topic.key].content}
-                highlight={highlight}
-              />
+              <HighlightContext.Provider value={highlights}>
+                <ContentBlock
+                  content={doc.topics[topic.key].content}
+                  renderers={{ code: CodeBlock }}
+                />
+              </HighlightContext.Provider>
             ) : (
               'No content'
             )}
