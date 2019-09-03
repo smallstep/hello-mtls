@@ -37,7 +37,7 @@
   "dependencies": {
     "mustache": "^3.0.3",
     "react-markdown": "^4.1.0",
-    "remark-parse": "^7.0.1",
+    "remark-parse": "^5.0.0",
     "unist-util-map": "^1.0.5"
   },
   "peerDependencies": {
