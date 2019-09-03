@@ -23,7 +23,7 @@ const ContentBlock = ({ content, data, renderers, className }) => (
   <ReactMarkdown
     source={content}
     renderers={renderers}
-    astPlugins={[template(data)]}
+    astPlugins={[template({ data })]}
   />
 );
 
