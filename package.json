@@ -35,7 +35,7 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
-    "lodash.template": "^4.5.0",
+    "mustache": "^3.0.3",
     "react-markdown": "^4.1.0",
     "remark-parse": "^7.0.1"
   },

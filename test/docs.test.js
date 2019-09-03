@@ -112,7 +112,7 @@ docs.forEach(name => {
       let source;
       try {
         // get the raw text
-        source = fs.readFileSync(filepath);
+        source = fs.readFileSync(filepath, 'utf8');
       } catch (e) {
         // file doesn't exist
         return;
