@@ -2,13 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import Prism from 'prismjs';
+import Mustache from 'mustache';
 import Ajv from 'ajv';
 import readChunk from 'read-chunk';
 import imageType from 'image-type';
 import sizeOf from 'image-size';
 
 import topics from '../src/topics';
-import { parseTemplate } from '../src/utils';
 import ContentBlock from '../src/ContentBlock';
 
 const docsPath = path.resolve(__dirname, '../docs');
@@ -107,6 +107,16 @@ docs.forEach(name => {
   });
 });
 
+const VALID_TAGS = [
+  'server_name',
+  'server_cert',
+  'server_key',
+  'client_name',
+  'client_cert',
+  'client_key',
+  'ca_cert',
+];
+
 docs.forEach(name => {
   test(`${name}: contains valid topic templates`, () => {
     topics.forEach(topic => {
@@ -126,12 +136,13 @@ docs.forEach(name => {
         return;
       }
 
-      try {
-        // atempt to parse the text (interpolate template variables)
-        parseTemplate(source);
-      } catch (e) {
-        fail(`${topic.key}.md: ${e}`);
-      }
+      Mustache.parse(source)
+        .filter(([type]) => type === 'name')
+        .forEach(([type, name]) => {
+          if (!VALID_TAGS.includes(name)) {
+            fail(`${topic.key}.md: Invalid tag '${name}'`);
+          }
+        });
     });
   });
 });

@@ -3,7 +3,7 @@ In your server's configuration block, specify the location of your CA root certi
 ```nginx
 server {
     listen                 443 ssl;
-    server_name            {{identity_name}};
+    server_name            {{server_name}};
     # ...
     ssl_client_certificate /etc/nginx/client_certs/{{ca_cert}};
     ssl_verify_client      optional;

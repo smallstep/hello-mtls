@@ -2,9 +2,9 @@ Configure your upstream location to use a certificate for TLS communication when
 
 ```nginx
 location /upstream {
-    proxy_pass                https://{{identity_name}};
-    proxy_ssl_certificate     {{identity_cert}};
-    proxy_ssl_certificate_key {{identity_key}};
+    proxy_pass                https://{{client_name}};
+    proxy_ssl_certificate     {{client_cert}};
+    proxy_ssl_certificate_key {{client_key}};
     proxy_ssl_protocols       TLSv1.2 TLSv1.3;
     proxy_ssl_ciphers         HIGH:!aNULL:!MD5;
     # ...
