@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Prism from 'prismjs';
 
@@ -10,26 +10,19 @@ import prismCss from 'raw-loader!prismjs/themes/prism-tomorrow.css';
 const HighlightContext = React.createContext([]);
 
 const CodeBlock = ({ value, language }) => {
+  const highlights = useContext(HighlightContext);
+
   const className = `language-${language}`;
   let html = value;
 
-  return (
-    <HighlightContext.Consumer>
-      {highlights => {
-        if (highlights.includes(language)) {
-          html = Prism.highlight(value, Prism.languages[language]);
-        }
+  if (highlights.includes(language)) {
+    html = Prism.highlight(value, Prism.languages[language]);
+  }
 
-        return (
-          <pre className={className}>
-            <code
-              className={className}
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          </pre>
-        );
-      }}
-    </HighlightContext.Consumer>
+  return (
+    <pre className={className}>
+      <code className={className} dangerouslySetInnerHTML={{ __html: html }} />
+    </pre>
   );
 };
 
