@@ -62,7 +62,15 @@ const validateConfig = ajv.compile({
               links: {
                 type: 'array',
                 items: {
-                  type: 'string',
+                  type: 'object',
+                  properties: {
+                    text: {
+                      type: 'string',
+                    },
+                    url: {
+                      type: 'string',
+                    },
+                  },
                 },
               },
             },

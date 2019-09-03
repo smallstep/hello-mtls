@@ -97,9 +97,13 @@ const Page = () => {
             {'links' in doc.topics[topic.key] ? (
               <ul>
                 {doc.topics[topic.key].links.map(link => (
-                  <li key={link}>
-                    <a href={link} target="_blank">
-                      {link}
+                  <li key={link.url}>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.text}
                     </a>
                   </li>
                 ))}

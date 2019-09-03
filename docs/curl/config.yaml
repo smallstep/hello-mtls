@@ -2,4 +2,5 @@ name: Curl
 topics:
   client:
     links:
-      - https://ec.haxx.se/usingcurl-tls.html
+      - text: Everything Curl > TLS
+        url: https://ec.haxx.se/usingcurl-tls.html
