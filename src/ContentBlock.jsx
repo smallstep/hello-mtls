@@ -2,12 +2,29 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import unified from 'unified';
 import markdown from 'remark-parse';
+import map from 'unist-util-map';
 import ReactMarkdown from 'react-markdown';
 
 import { parseTemplate } from './utils';
 
+const template = ({ data }) => {
+  // remark plugin to interpolate all template values in text values
+  return tree => {
+    map(tree, node => {
+      if ('value' in node) {
+        node.value = parseTemplate(node.value, data);
+      }
+    });
+    return tree;
+  };
+};
+
 const ContentBlock = ({ content, data, renderers, className }) => (
-  <ReactMarkdown source={parseTemplate(content, data)} renderers={renderers} />
+  <ReactMarkdown
+    source={content}
+    renderers={renderers}
+    astPlugins={[template(data)]}
+  />
 );
 
 ContentBlock.parseLanguages = values => {
