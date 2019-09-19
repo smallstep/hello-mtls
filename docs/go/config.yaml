@@ -1,0 +1,16 @@
+name: Go
+topics:
+  server_auth:
+    links:
+      - text: Golang http package with https example
+        url: https://golang.org/pkg/net/http/#example_ListenAndServeTLS
+  client_auth:
+    links:
+      - text: Golang x509 package
+        url: https://golang.org/pkg/crypto/x509/
+      - text: Golang TLS package
+        url: https://golang.org/pkg/crypto/tls/
+  client:
+    links:
+      - text: Golang TLS package
+        url: https://golang.org/pkg/crypto/tls/
