@@ -2,11 +2,11 @@ In your Go code, we specify a TLS stack configuration for your client(s) making 
 ```go
 // ...
 
-caCert, _ := ioutil.ReadFile("root.crt")
+caCert, _ := ioutil.ReadFile("{{ ca_cert }}")
 caCertPool := x509.NewCertPool()
 caCertPool.AppendCertsFromPEM(caCert)
 
-cert, _ := tls.LoadX509KeyPair("client.crt", "client.key")
+cert, _ := tls.LoadX509KeyPair("{{ client_cert }}", "{{ client_key }}")
 
 client := &http.Client{
     Transport: &http.Transport{
@@ -18,7 +18,7 @@ client := &http.Client{
 }
 
 // Make a request
-// r, err := client.Get("https://localhost:9443/hi")
+// r, err := client.Get("https://{{ server_name }}:9443}")
 
 // ...
 ```

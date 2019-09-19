@@ -1,4 +1,4 @@
-name: Golang (vanilla)
+name: Go
 topics:
   server_auth:
     links:

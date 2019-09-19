@@ -3,7 +3,7 @@ In your server's Go file, we pass the server's certificate and private key into 
 ```go
 // ...
 
-http.ListenAndServeTLS(":9443", "server.crt", "server.key", nil)
+http.ListenAndServeTLS(":9443", "{{ server_cert }}", "{{ server_key }}", nil)
 
 // ...
 ```

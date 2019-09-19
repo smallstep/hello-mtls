@@ -3,7 +3,7 @@ In your server's Go file, we pass a TLS stack configuration into the server init
 ```go
 // ...
 
-caCert, _ := ioutil.ReadFile("root.crt")
+caCert, _ := ioutil.ReadFile("{{ ca_cert }}")
 caCertPool := x509.NewCertPool()
 caCertPool.AppendCertsFromPEM(caCert)
 
@@ -18,7 +18,7 @@ server := &http.Server{
     TLSConfig: tlsConfig,
 }
 
-server.ListenAndServeTLS("server.crt", "server.key")
+server.ListenAndServeTLS("{{ server_cert }}", "{{ server_key }}")
 
 // ...
 ```
