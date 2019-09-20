@@ -41,10 +41,15 @@ const Page = () => {
     // parse all the languages from the markdown content and load their prism
     // language modules
     const contents = Object.values(doc.topics).map(topic => topic.content);
-    const languageImports = ContentBlock.parseLanguages(contents).map(lang =>
-      import(`prismjs/components/prism-${lang}`)
-        .then(() => setHighlights(highlights.concat([lang])))
-        .catch(() => console.log(`"${lang}" is not a valid Prism.js language.`))
+    const languages = ContentBlock.parseLanguages(contents);
+    const languageImports = languages.map(lang =>
+      import(`prismjs/components/prism-${lang}`).catch(() =>
+        console.log(`"${lang}" is not a valid Prism.js language.`)
+      )
+    );
+
+    Promise.all(languageImports).then(modules =>
+      setHighlights(highlights.concat(languages))
     );
   }
 
