@@ -1,0 +1,22 @@
+name: Node.js
+topics:
+  server_auth:
+    links:
+      - text: HTTPS > https.createServer()
+        url: https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
+      - text: TLS (SSL) > tls.createServer()
+        url: https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener
+      - text: TLS (SSL) > tls.createSecureContext()
+        url: https://nodejs.org/api/tls.html#tls_tls_createsecurecontext_options
+  client_auth:
+    links:
+      - text: HTTPS > https.createServer()
+        url: https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
+      - text: TLS (SSL) > tls.createServer()
+        url: https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener
+      - text: TLS (SSL) > tls.createSecureContext()
+        url: https://nodejs.org/api/tls.html#tls_tls_createsecurecontext_options
+  client:
+    links:
+      - text: HTTPS > https.request()
+        url: https://nodejs.org/api/https.html#https_https_request_options_callback

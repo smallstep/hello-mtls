@@ -1,0 +1,25 @@
+Pass your certificate, private key, and root CA certificate to `https.request` to authenticate your request over TLS.
+
+```javascript
+import fs from 'fs';
+import https from 'https';
+
+const req = https.request(
+  {
+    hostname: '{{ server_name }}',
+    port: 433,
+    path: '/',
+    method: 'GET',
+    cert: fs.readFileSync('{{ client_cert }}'),
+    key: fs.readFileSync('{{ client_key }}'),
+    ca: fs.readFileSync('{{ ca_cert }}')
+  },
+  res => {
+    res.on('data', function(data) {
+      // do something with response
+    });
+  }
+);
+
+req.end();
+```
