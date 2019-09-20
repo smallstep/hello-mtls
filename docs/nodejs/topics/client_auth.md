@@ -8,6 +8,7 @@ https
   .createServer(
     {
       // ...
+      requestCert: true,
       ca: fs.readFileSync('{{ ca_cert }}'),
       // ...
     },
