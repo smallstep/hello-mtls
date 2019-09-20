@@ -1,0 +1,8 @@
+name: Axios
+topics:
+  client:
+    links:
+      - text: GitHub axios/axios > README > Request Config
+        url: https://github.com/axios/axios#request-config
+      - text: HTTPS > https.Agent
+        url: https://nodejs.org/api/https.html#https_class_https_agent
