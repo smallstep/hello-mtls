@@ -1,8 +1,8 @@
 Pass your certificate, private key, and root CA certificate to `https.request` to authenticate your request over TLS.
 
 ```javascript
-import fs from 'fs';
-import https from 'https';
+const fs = require('fs');
+const https = require('https');
 
 const req = https.request(
   {

@@ -1,8 +1,8 @@
 In your `https` server, specify the location of your CA root certificate to use for authenticating client certificates.
 
 ```javascript
-import fs from 'fs';
-import https from 'https';
+const fs = require('fs');
+const https = require('https');
 
 https
   .createServer(

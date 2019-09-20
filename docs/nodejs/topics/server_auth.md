@@ -1,8 +1,8 @@
 In your `https` server, specify the locations of the server's certificate and private key.
 
 ```javascript
-import fs from 'fs';
-import https from 'https';
+const fs = require('fs');
+const https = require('https');
 
 https
   .createServer(
