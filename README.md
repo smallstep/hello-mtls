@@ -44,12 +44,12 @@ Properties with corresponding names in the `topics` object in `config.yaml` also
 If your documentation makes use of the name of a certificate's identity, its certificate filename, its private key filename, or the root certificate filename, please use these template tokens. They will be interpolated with the appropriate values at build time in different contexts:
 
 - `{{ server_name }}` &mdash; Name of the identity like `example.internal.net`
-- `{{ server_cert }}` &mdash; Filename of the server's certificate like `example.crt`
-- `{{ server_key }}` &mdash; Filename of the server's private key like `example.key`
+- `{{ server_cert }}` &mdash; Filename of the server's certificate like `server.crt`
+- `{{ server_key }}` &mdash; Filename of the server's private key like `server.key`
 - `{{ server_port }}` &mdash; Port number that that the server binds in the server auth docs
 - `{{ client_name }}` &mdash; Name of the identity like `example.internal.net`
-- `{{ client_cert }}` &mdash; Filename of the client's certificate like `example.crt`
-- `{{ client_key }}` &mdash; Filename of the client's private key like `example.key`
+- `{{ client_cert }}` &mdash; Filename of the client's certificate like `client.crt`
+- `{{ client_key }}` &mdash; Filename of the client's private key like `client.key`
 - `{{ ca_cert }}` &mdash; Filename of the root CA certificate like `ca.crt`
 
 Do not use markdown headlines.
