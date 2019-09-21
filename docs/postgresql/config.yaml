@@ -4,3 +4,11 @@ topics:
     links:
       - text: Secure TCP/IP Connections with SSL
         url: https://www.postgresql.org/docs/10/ssl-tcp.html
+  client_auth:
+    links:
+      - text: Secure TCP/IP Connections with SSL
+        url: https://www.postgresql.org/docs/10/ssl-tcp.html
+      - text: The pg_hba.conf File
+        url: https://www.postgresql.org/docs/10/auth-pg-hba-conf.html
+      - text: Authentication Methods > Certificate Authentication
+        url: https://www.postgresql.org/docs/10/auth-methods.html#AUTH-CERT
