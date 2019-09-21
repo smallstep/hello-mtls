@@ -1,4 +1,4 @@
-Create a custom `https` agent configured with your certificate, private key, and root CA certificate. Pass this agent to axios when you call `axios.get` (or its respective request method) to authenticate your request over TLS.
+Create a custom `https` agent configured with your certificate, private key, and root CA certificate. Pass this agent to axios when you call `axios.get()` (or its respective request method) to authenticate your request over TLS.
 
 ```javascript
 const fs = require('fs');
