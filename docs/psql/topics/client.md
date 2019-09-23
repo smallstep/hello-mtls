@@ -3,7 +3,7 @@ Connect to your PostgreSQL database using `psql` connection parameters to specif
 Setting the `sslmode` parameter to `verify-full` also ensures that the PostgreSQL server name matches the name in the certificate it presents to clients.
 
 ```shell-session
-$ psql "host={{ server_name }} user=myuser dbname=mydatabase sslmode=verify-full sslcert={{ client_cert }} sslkey={{ client_key }} sslrootcert={{ ca_cert }}"
+$ psql "host={{ server_name }} port={{ server_port }} user=myuser dbname=mydatabase sslmode=verify-full sslcert={{ client_cert }} sslkey={{ client_key }} sslrootcert={{ ca_cert }}"
 ```
 
 As an alternative, if you'd like to avoid specifying file paths on each connection, you can copy them to your `psql` client's configuration directory.
@@ -18,5 +18,5 @@ $ cp {{ client_key }} ~/.postgresql/postgresql.key
 The connection command then becomes only the following:
 
 ```shell-session
-$ psql "host={{ server_name }} user=myuser dbname=mydatabase sslmode=verify-full"
+$ psql "host={{ server_name }} port={{ server_port }} user=myuser dbname=mydatabase sslmode=verify-full"
 ```

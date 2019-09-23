@@ -1,4 +1,5 @@
 name: Psql (PostgreSQL)
+protocol: postgresql
 topics:
   client:
     links:

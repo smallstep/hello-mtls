@@ -1,4 +1,6 @@
 name: PostgreSQL
+protocol: postgresql
+server_port: 5432
 topics:
   server_auth:
     links:
