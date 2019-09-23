@@ -1,0 +1,11 @@
+name: Requests
+protocol: https
+topics:
+  client:
+    links:
+      - text: Advanced Usage > Client Side Certificates
+        url: https://2.python-requests.org/en/master/user/advanced/#client-side-certificates
+      - text: Advanced Usage > SSL Cert Verification
+        url: https://2.python-requests.org/en/master/user/advanced/#ssl-cert-verification
+      - text: Advanced Usage > CA Certificates
+        url: https://2.python-requests.org/en/master/user/advanced/#ca-certificates
