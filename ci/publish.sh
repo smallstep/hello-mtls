@@ -17,7 +17,7 @@ git push --tags
 # copy logo assets for upload
 mkdir -p assets
 cp src/graphics/dummy.png assets/dummy.png
-find docs/*/logo.png -type f | xargs dirname | xargs basename | xargs -I {} cp docs/{}/logo.png assets/{}.png
+find docs/*/logo.png -type f | xargs dirname | xargs -I {} basename {} | xargs -I {} cp docs/{}/logo.png assets/{}.png
 
 # configure npm
 echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > .npmrc
