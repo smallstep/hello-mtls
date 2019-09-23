@@ -7,12 +7,12 @@ const axios = require('axios');
 
 // ...
 const httpsAgent = new https.Agent({
-  cert: fs.readFileSync('client.crt'),
-  key: fs.readFileSync('client.key'),
-  ca: fs.readFileSync('ca.crt'),
+  cert: fs.readFileSync('{{ client_cert }}'),
+  key: fs.readFileSync('{{ client_key }}'),
+  ca: fs.readFileSync('{{ ca_cert }}'),
 });
 
-const result = await axios.get('https://localhost:9443', { httpsAgent });
+const result = await axios.get('https://{{ server_name }}:{{ server_port }}', { httpsAgent });
 // do something with the result
 
 // ...
