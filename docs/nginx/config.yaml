@@ -1,4 +1,6 @@
 name: Nginx
+protocol: https
+server_port: 443
 topics:
   server_auth:
     links:

@@ -44,6 +44,8 @@ module.exports = function() {
       key,
       name: yaml.safeLoad(config).name,
       logo: loadLogo(logoPath, this.mode, options.asset_url),
+      protocol: yaml.safeLoad(config).protocol,
+      server_port: yaml.safeLoad(config).server_port,
       availableTopics: Array.from(availableTopics),
     };
   });

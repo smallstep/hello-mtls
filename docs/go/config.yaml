@@ -1,4 +1,6 @@
 name: Go
+protocol: https
+server_port: 9443
 topics:
   server_auth:
     links:

@@ -51,6 +51,12 @@ const validateConfig = ajv.compile({
     name: {
       type: 'string',
     },
+    protocol: {
+      type: 'string',
+    },
+    server_port: {
+      type: 'number',
+    },
     topics: {
       type: 'object',
       properties: {
@@ -83,7 +89,7 @@ const validateConfig = ajv.compile({
     },
   },
   additionalProperties: false,
-  required: ['name'],
+  required: ['name', 'protocol'],
 });
 
 docs.forEach(name => {
@@ -111,6 +117,7 @@ const VALID_TAGS = [
   'server_name',
   'server_cert',
   'server_key',
+  'server_port',
   'client_name',
   'client_cert',
   'client_key',

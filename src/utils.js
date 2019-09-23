@@ -10,6 +10,7 @@ export const parseTemplate = (content, data = {}) => {
     server_name: data.server_name || 'example.internal.net',
     server_cert: data.server_cert || 'example.crt',
     server_key: data.server_key || 'example.key',
+    server_port: data.server_port || 443,
     client_name: data.client_name || 'example.internal.net',
     client_cert: data.client_cert || 'example.crt',
     client_key: data.client_key || 'example.key',

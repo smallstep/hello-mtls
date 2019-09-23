@@ -1,4 +1,5 @@
 name: Curl
+protocol: https
 topics:
   client:
     links:
