@@ -7,7 +7,7 @@ const https = require('https');
 const req = https.request(
   {
     hostname: '{{ server_name }}',
-    port: 433,
+    port: {{ server_port }},
     path: '/',
     method: 'GET',
     cert: fs.readFileSync('{{ client_cert }}'),
