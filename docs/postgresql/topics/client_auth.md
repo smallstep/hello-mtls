@@ -4,11 +4,10 @@ Move your `{{ ca_cert }}` certificate to your PostgreSQL data directory&mdash;of
 $ sudo cp {{ ca_cert }} /var/lib/pgsql/data/root.crt
 ```
 
-You'll need to maually set the file permissions to disallow access to world or group.
+Make sure PostgreSQL has access to the file.
 
 ```shell-session
 $ sudo chown postgres:postgres /var/lib/pgsql/data/root.crt
-$ sudo chmod 0600 /var/lib/pgsql/data/root.crt
 ```
 
 Configure `postgresql.conf` to point to your root CA certificate. PostgreSQL will use this certificate to verify certificates presented by clients.

@@ -13,11 +13,11 @@ $ sudo cp {{ server_cert }} /var/lib/pgsql/data/server.crt
 $ sudo cp {{ server_key }} /var/lib/pgsql/data/server.key
 ```
 
-You'll need to maually set the file permissions to disallow access to world or group.
+You'll need to ensure that PostgreSQL has access to the files and set the private key file permissions to disallow access to world or group.
 
 ```shell-session
 $ sudo chown postgres:postgres /var/lib/pgsql/data/server.{crt,key}
-$ sudo chmod 0600 /var/lib/pgsql/data/server.{crt,key}
+$ sudo chmod 0600 /var/lib/pgsql/data/server.key
 ```
 
 If you'd like to specify a different path for these files, manually configure them in `postgresql.conf`.
