@@ -39,7 +39,8 @@ ContentBlock.parseLanguages = values => {
       ...values.map(processor.parse.bind(processor)).map(ast => ast.children)
     ) // parse values into nodes
     .filter(node => node.type === 'code') // keep code nodes
-    .map(code => code.lang); // get language from code node
+    .map(code => code.lang) // get language from code node
+    .filter(lang => !!lang); // exclude nodes that had no language in the fence
 };
 
 ContentBlock.propTypes = {
