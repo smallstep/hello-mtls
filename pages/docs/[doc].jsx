@@ -20,9 +20,14 @@ const CodeBlock = ({ value, language }) => {
   }
 
   return (
-    <pre className={className}>
-      <code className={className} dangerouslySetInnerHTML={{ __html: html }} />
-    </pre>
+    <div style={{ marginBottom: '20px' }}>
+      <pre className={className}>
+        <code
+          className={className}
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </pre>
+    </div>
   );
 };
 
