@@ -1,0 +1,8 @@
+name: Nginx (Reverse Proxy)
+protocol: https
+server_port: 443
+topics:
+  client:
+    links:
+      - text: Module ngx_http_ssl_module
+        url: https://nginx.org/en/docs/http/ngx_http_proxy_module.html

@@ -12,7 +12,3 @@ topics:
     links:
       - text: Module ngx_http_ssl_module
         url: https://nginx.org/en/docs/http/ngx_http_ssl_module.html
-  client:
-    links:
-      - text: Module ngx_http_ssl_module
-        url: https://nginx.org/en/docs/http/ngx_http_proxy_module.html
