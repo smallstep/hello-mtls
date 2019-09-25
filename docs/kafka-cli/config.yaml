@@ -1,0 +1,7 @@
+name: Kafka Command Line Tools
+protocol: kafka
+topics:
+  client:
+    links:
+      - text: Encryption and Authentication with SSL
+        url: https://docs.confluent.io/current/kafka/authentication_ssl.html

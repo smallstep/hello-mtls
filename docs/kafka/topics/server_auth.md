@@ -6,7 +6,7 @@ Use `openssl` to package up the server private key and certificate into PKCS12 f
 $ openssl pkcs12 -export -in {{ server_cert }} -inkey {{ server_key }} -name {{ server_name }} > server.p12
 ```
 
-Next, use `keytool` to create a Java KeyStore (JKS) with the certificate and key for use by Kafka. You'll be prompted to create a new password for the resulting file as well as enter the password for the PKCS12 file from the previous step. You can delete the PKCS12 file after. Hang onto the new JKS password for use in configuration below.
+Next, use `keytool` to create a Java KeyStore (JKS) with the certificate and key for use by Kafka. You'll be prompted to create a new password for the resulting file as well as enter the password for the PKCS12 file from the previous step. Hang onto the new JKS password for use in configuration below.
 
 ```shell-session
 $ keytool -importkeystore -srckeystore server.p12 -destkeystore kafka.server.keystore.jks -srcstoretype pkcs12 -alias {{ server_name }}
@@ -47,7 +47,6 @@ Copy your Java KeyStore files into place.
 $ sudo mkdir -p /var/private/ssl
 $ sudo cp kafka.server.*.jks /var/private/ssl/
 $ sudo chown kafka:kafka /var/private/ssl/kafka.server.*.jks
-$ sudo chmod 0600 /var/private/ssl/kafka.server.keystore.jks
 ```
 
 Reference them in `server.properties` and provide the passwords you created for each.
