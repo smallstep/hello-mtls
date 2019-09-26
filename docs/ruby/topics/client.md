@@ -19,9 +19,10 @@ end
 # ...
 
 # parse the client certificate and intermediate CA certificate from {{ client_cert }}
-certs = File.read('{{ client_cert }}').scan(/-----BEGIN CERTIFICATE-----(?:.|\n)+?-----END CERTIFICATE-----/)
-client_cert = OpenSSL::X509::Certificate.new(certs[0])
-intermediate_cert = OpenSSL::X509::Certificate.new(certs[1])
+bundle = File.read('{{ client_cert }}')
+bundle_certs = bundle.scan(/-----BEGIN CERTIFICATE-----(?:.|\n)+?-----END CERTIFICATE-----/)
+client_cert = OpenSSL::X509::Certificate.new(bundle_certs[0])
+intermediate_cert = OpenSSL::X509::Certificate.new(bundle_certs[1])
 
 options = {
   use_ssl: true,
