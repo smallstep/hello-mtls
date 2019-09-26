@@ -1,2 +1,13 @@
 name: Ruby
 protocol: https
+topics:
+  client:
+    links:
+      - text: Net::HTTP
+        url: https://ruby-doc.org/stdlib-2.6.4/libdoc/net/http/rdoc/Net/HTTP.html
+      - text: OpenSSL::X509::Certificate
+        url: https://ruby-doc.org/stdlib-2.6.4/libdoc/openssl/rdoc/OpenSSL/X509/Certificate.html
+      - text: OpenSSL::PKey::EC
+        url: https://ruby-doc.org/stdlib-2.6.4/libdoc/openssl/rdoc/OpenSSL/PKey/EC.html
+      - text: Allow setting SSLContext#extra_chain_cert in Net::HTTP
+        url: https://bugs.ruby-lang.org/issues/9758
