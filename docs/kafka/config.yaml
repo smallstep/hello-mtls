@@ -1,0 +1,12 @@
+name: Kafka
+protocol: kafka
+server_port: 9093
+topics:
+  server_auth:
+    links:
+      - text: Encryption and Authentication using SSL
+        url: https://docs.confluent.io/2.0.0/kafka/ssl.html
+  client_auth:
+    links:
+      - text: Encryption and Authentication with SSL
+        url: https://docs.confluent.io/current/kafka/authentication_ssl.html
