@@ -1,6 +1,6 @@
 To start PostgreSQL in SSL mode, first enable SSL in `postgresql.conf`.
 
-```bash
+```ini
 # ...
 ssl = on
 # ...
@@ -22,7 +22,7 @@ $ sudo chmod 0600 /var/lib/pgsql/data/server.key
 
 If you'd like to specify a different path for these files, manually configure them in `postgresql.conf`.
 
-```bash
+```ini
 # ...
 ssl_cert_file = '/path/to/server.crt'
 ssl_key_file = '/path/to/server.key'
@@ -31,7 +31,7 @@ ssl_key_file = '/path/to/server.key'
 
 In your `pg_hba.conf` file, change all records for non-local connections from `host` to `hostssl` to require clients to connect over TLS. It might look something like this.
 
-``` bash
+``` ini
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
 
 # ...
