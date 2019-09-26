@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Prism from 'prismjs';
+import 'prismjs/components/prism-markup-templating'; // needed for php
 
 import topics from '../../src/topics.json';
 import ContentBlock from '../../src/ContentBlock';
