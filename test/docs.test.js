@@ -57,6 +57,9 @@ const validateConfig = ajv.compile({
     server_port: {
       type: 'number',
     },
+    key_type: {
+      type: 'string',
+    },
     topics: {
       type: 'object',
       properties: {

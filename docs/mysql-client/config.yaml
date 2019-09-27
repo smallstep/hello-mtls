@@ -1,0 +1,8 @@
+name: MySQL Client
+protocol: mysql
+key_type: RSA
+topics:
+  client:
+    links:
+      - text: Using Encrypted Connections
+        url: https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-encrypted-connections.html

@@ -1,19 +1,20 @@
 name: MySQL
 protocol: mysql
 server_port: 3306
+key_type: RSA
 topics:
   server_auth:
     links:
       - text: Using Encrypted Connections
-        url: https://dev.mysql.com/doc/refman/5.7/en/encrypted-connections.html
+        url: https://dev.mysql.com/doc/refman/8.0/en/encrypted-connections.html
       - text: Setting Up Replication to Use Encrypted Connections
-        url: https://dev.mysql.com/doc/refman/5.7/en/replication-solutions-encrypted-connections.html
+        url: https://dev.mysql.com/doc/refman/8.0/en/replication-solutions-encrypted-connections.html
       - text: Server System Variables > require_secure_transport
-        url: https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_require_secure_transport
+        url: https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_require_secure_transport
   client_auth:
     links:
       - text: Using Encrypted Connections
-        url: https://dev.mysql.com/doc/refman/5.7/en/encrypted-connections.html
+        url: https://dev.mysql.com/doc/refman/8.0/en/encrypted-connections.html
       - text: CREATE USER Syntax
         url: https://dev.mysql.com/doc/refman/8.0/en/create-user.html
       - text: ALTER USER Syntax
