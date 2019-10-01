@@ -24,7 +24,7 @@ docs.forEach(name => {
     // check for only expected files in the main doc directory
     fs.readdirSync(docPath).forEach(file => {
       if (!['config.yaml', 'logo.png', 'topics'].includes(file)) {
-        fail(`Unexpected file ${file}`);
+        throw new Error(`Unexpected file ${file}`);
       }
     });
 
@@ -32,7 +32,7 @@ docs.forEach(name => {
       // check for only the allowed topics in the topics directory
       fs.readdirSync(topicsPath).forEach(file => {
         if (!validTopicFiles.includes(file)) {
-          fail(`Unexpected file topics/${file}`);
+          throw new Error(`Unexpected file topics/${file}`);
         }
       });
     } catch (e) {
@@ -102,7 +102,7 @@ docs.forEach(name => {
       const error = validateConfig.errors[0];
 
       // error message
-      fail(
+      throw new Error(
         `${error.dataPath ? error.dataPath + ' ' : ''}${
           error.message
         } : ${Object.keys(error.params)
@@ -147,9 +147,38 @@ docs.forEach(name => {
         .filter(([type]) => type === 'name')
         .forEach(([type, name]) => {
           if (!VALID_TAGS.includes(name)) {
-            fail(`${topic.key}.md: Invalid tag '${name}'`);
+            throw new Error(`${topic.key}.md: Invalid tag '${name}'`);
           }
         });
+    });
+  });
+});
+
+docs.forEach(name => {
+  test(`${name}: contains no html entities`, () => {
+    topics.forEach(topic => {
+      const filepath = path.resolve(
+        docsPath,
+        name,
+        'topics',
+        `${topic.key}.md`
+      );
+
+      let source;
+      try {
+        // get the raw text
+        source = fs.readFileSync(filepath, 'utf8');
+      } catch (e) {
+        // file doesn't exist
+        return;
+      }
+
+      const match = source.match(/&[^;]+;/g);
+      if (match) {
+        throw new Error(
+          `Unexpected html entities: ${match.map(e => `"${e}"`).join(', ')}`
+        );
+      }
     });
   });
 });
@@ -169,7 +198,7 @@ docs.forEach(name => {
         try {
           require.resolve(`prismjs/components/prism-${lang}`);
         } catch (e) {
-          fail(
+          throw new Error(
             `Code block language '${lang}' is not a valid Prism.js language.`
           );
         }
@@ -196,13 +225,13 @@ docs.forEach(name => {
 
     // check mimetype
     if (imageType(buffer).mime !== 'image/png') {
-      fail('Logo is not a valid PNG image');
+      throw new Error('Logo is not a valid PNG image');
     }
 
     // check dimensions
     const dimensions = sizeOf(imgPath);
     if (dimensions.width !== 256 || dimensions.height !== 256) {
-      fail('Logo must be 256 x 256 pixels');
+      throw new Error('Logo must be 256 x 256 pixels');
     }
   });
 });
