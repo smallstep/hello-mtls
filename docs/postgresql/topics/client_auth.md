@@ -1,4 +1,4 @@
-Move your `{{ ca_cert }}` certificate to your PostgreSQL data directory&mdash;often at `/var/lib/pgsql/data` or `/usr/local/pgsql/data`&mdash;and name it `root.crt` (the usual convention, though other paths are possible).
+Move your `{{ ca_cert }}` certificate to your PostgreSQL data directory—often at `/var/lib/pgsql/data` or `/usr/local/pgsql/data`—and name it `root.crt` (the usual convention, though other paths are possible).
 
 ```shell-session
 $ sudo cp {{ ca_cert }} /var/lib/pgsql/data/root.crt
