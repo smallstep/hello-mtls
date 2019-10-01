@@ -18,7 +18,7 @@ client := &http.Client{
 }
 
 // Make a request
-// r, err := client.Get("https://{{ server_name }}:{{ server_port }}}")
+// r, err := client.Get("https://{{ server_name }}:{{ server_port }}")
 
 // ...
 ```
