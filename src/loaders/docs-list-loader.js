@@ -20,7 +20,7 @@ module.exports = function() {
     const logoPath = path.resolve(__dirname, `../../docs/${key}/logo.png`);
     this.addDependency(logoPath);
 
-    const config = fs.readFileSync(configPath, 'utf8');
+    const config = yaml.safeLoad(fs.readFileSync(configPath, 'utf8'));
 
     const availableTopics = topics.reduce((topics, topic) => {
       if (config.topics && topic.key in config.topics) {
@@ -40,14 +40,16 @@ module.exports = function() {
       return topics;
     }, new Set([]));
 
-    return {
+    const out = {
       key,
-      name: yaml.safeLoad(config).name,
+      name: config.name,
       logo: loadLogo(logoPath, this.mode, options.asset_url),
-      protocol: yaml.safeLoad(config).protocol,
-      server_port: yaml.safeLoad(config).server_port,
+      protocol: config.protocol,
+      server_port: config.server_port,
+      key_type: config.key_type,
       availableTopics: Array.from(availableTopics),
     };
+    return out;
   });
   return `export default ${JSON.stringify(docs)};`;
 };
