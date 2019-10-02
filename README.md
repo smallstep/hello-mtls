@@ -1,6 +1,6 @@
 # Hello mTLS
 
-This package contains documentation on how to configure a broad array of technologies to perform mutual TLS. It is part of the Hello mTLS project, designed to raise developer awareness about public key infrastructure as a potential solution to common security problems.
+This package contains documentation on how to configure a broad array of technologies to perform mutual TLS. It is part of the [Hello mTLS](https://smallstep.com/hello-mtls) project, designed to raise developer awareness about public key infrastructure as a potential solution to common security problems.
 
 If you notice any outdated, missing, or errant docs, pull requests are strongly encouraged!
 
