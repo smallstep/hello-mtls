@@ -3,7 +3,7 @@ Copy the `{{ server_cert }}`, `{{ server_key }}`, and `{{ ca_cert }}` files to t
 ```shell-session
 $ sudo cp {{ server_cert }} /var/lib/mysql/server-cert.pem
 $ sudo cp {{ server_key }} /var/lib/mysql/server-key.pem
-$ sudo cp ca-bundle.crt /var/lib/mysql/ca.pem
+$ sudo cp {{ ca_cert }} /var/lib/mysql/ca.pem
 $ sudo chown msyql:mysql /var/lib/mysql/server-{cert,key}.pem /var/lib/mysql/ca.pem
 ```
 
