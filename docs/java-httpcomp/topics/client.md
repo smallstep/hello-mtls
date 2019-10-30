@@ -24,7 +24,7 @@ You'll also need a trust store in JKS format containing the root certificate fro
 $ keytool -keystore java.client.truststore.jks -alias CARoot -import -file {{ ca_cert }}
 ```
 
-Pass your JKS key &amp; trust store into your custom `SSLContext` which you will subsequently use to bootstrap HTTPS clients to make request. All of the following Java code will depend on [org.apache.httpcomponents's httpclient](https://search.maven.org/artifact/org.apache.httpcomponents/httpclient/4.5.10/jar).
+Pass your JKS key and trust store into your custom `SSLContext` which you will subsequently use to bootstrap HTTPS clients to make request. All of the following Java code will depend on [org.apache.httpcomponents's httpclient](https://search.maven.org/artifact/org.apache.httpcomponents/httpclient/4.5.10/jar).
 
 ```java
 // ...
