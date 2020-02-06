@@ -12,7 +12,7 @@ client := &http.Client{
     Transport: &http.Transport{
         TLSClientConfig: &tls.Config{
             RootCAs: caCertPool,
-            certificates: []tls.Certificate{cert},
+            Certificates: []tls.Certificate{cert},
         },
     },
 }
