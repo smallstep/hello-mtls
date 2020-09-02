@@ -1,0 +1,11 @@
+name: Traefik
+protocol: https
+topics:
+  server_auth:
+    links:
+      - text: Certificates Definition
+        url: https://docs.traefik.io/https/tls/#certificates-definition
+  client_auth:
+    links:
+      - text: Client Authentication (mTLS)
+        url: https://docs.traefik.io/https/tls/#client-authentication-mtls
