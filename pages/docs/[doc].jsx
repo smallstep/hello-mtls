@@ -6,8 +6,6 @@ import 'prismjs/components/prism-markup-templating'; // needed for php
 import topics from '../../src/topics.json';
 import ContentBlock from '../../src/ContentBlock';
 
-import prismCss from 'raw-loader!prismjs/themes/prism-tomorrow.css';
-
 const HighlightContext = React.createContext([]);
 
 const CodeBlock = ({ value, language }) => {
@@ -71,7 +69,6 @@ const Page = () => {
 
   return (
     <div>
-      <style dangerouslySetInnerHTML={{ __html: prismCss.toString() }} />
       <h1>
         <img
           src={doc.logo}

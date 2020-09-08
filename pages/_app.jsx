@@ -1,11 +1,11 @@
-import githubMarkdownCss from 'raw-loader!github-markdown-css/github-markdown.css';
+import 'github-markdown-css/github-markdown.css';
+import 'prismjs/themes/prism-tomorrow.css';
 
 const App = ({ Component, pageProps }) => (
   <div
     className="markdown-body"
     style={{ margin: '45px auto', width: '100%', maxWidth: '960px' }}
   >
-    <style dangerouslySetInnerHTML={{ __html: githubMarkdownCss.toString() }} />
     <Component {...pageProps} />
   </div>
 );
