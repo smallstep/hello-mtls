@@ -1,11 +1,21 @@
-name: Traefik
+name: Traefik v2
 protocol: https
 topics:
   server_auth:
     links:
-      - text: Certificates Definition
-        url: https://docs.traefik.io/https/tls/#certificates-definition
+      - text: User defined certificates
+        url: https://doc.traefik.io/traefik/https/tls/#user-defined
+      - text: Default certificate
+        url: https://doc.traefik.io/traefik/https/tls/#default-certificate
   client_auth:
     links:
-      - text: Client Authentication (mTLS)
+      - text: Client authentication (mTLS)
         url: https://docs.traefik.io/https/tls/#client-authentication-mtls
+      - text: Router TLS options
+        url: https://doc.traefik.io/traefik/routing/routers/#options
+  renewal:
+    links:
+      - text: ACME certificate resolver
+        url: https://doc.traefik.io/traefik/https/acme/
+      - text: Router TLS certificate resolver
+        url: https://doc.traefik.io/traefik/routing/routers/#certresolver
