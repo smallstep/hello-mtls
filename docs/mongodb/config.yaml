@@ -1,0 +1,12 @@
+name: MongoDB v4.4
+protocol: mongodb
+server_port: 27017
+topics:
+  server_auth:
+    links:
+      - text: Configure mongod and mongos for TLS/SSL
+        url: https://docs.mongodb.com/manual/tutorial/configure-ssl/
+  client_auth:
+    links:
+      - text: Set Up mongod and mongos with Client Certificate Validation
+        url: https://docs.mongodb.com/manual/tutorial/configure-ssl/#client-cert-validation-ssl
