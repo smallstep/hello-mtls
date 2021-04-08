@@ -19,7 +19,7 @@ Restart your mongoDB server for these changes to take effect.
 Confirm the configuration by connecting with a mongoDB client:
 
 ```shell-session
-$ mongo --tls --tlsCAFile /etc/step/certs/{{ ca_crt }}
+$ mongo --tls --tlsCAFile /etc/step/certs/{{ ca_cert }}
 MongoDB shell version v4.4.3
 connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
 Implicit session: session { "id" : UUID("5ddf6126-1b99-4364-a2c5-4262ad2e9d7b") }
