@@ -1,7 +1,0 @@
-name: Prometheus (node_exporter)
-protocol: https
-topics:
-  client:
-    links:
-      - text: HTTPS Package for Prometheus
-        url: https://github.com/prometheus/node_exporter/blob/master/https/README.md
