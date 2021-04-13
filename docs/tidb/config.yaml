@@ -1,10 +1,4 @@
 name: TiDB
 protocol: mysql
 server_port: 4000
-topics:
-  client:
-    links:
-      - text: Enable TLS Between TiDB Clients and Servers
-        url: https://docs.pingcap.com/tidb/stable/enable-tls-between-clients-and-servers
-      - text: Enable TLS Between TiDB Components
-        url: https://docs.pingcap.com/tidb/stable/enable-tls-between-components
+topics: {}
