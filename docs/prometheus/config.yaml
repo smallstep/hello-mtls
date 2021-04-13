@@ -1,0 +1,4 @@
+name: Prometheus
+protocol: prometheus
+server_port: 9100
+topics: {}
