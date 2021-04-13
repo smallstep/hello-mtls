@@ -1,7 +1,8 @@
 name: Prometheus (node_exporter)
-protocol: https
+protocol: prometheus
+server_port: 9100
 topics:
-  client:
+  server_auth:
     links:
       - text: HTTPS Package for Prometheus
         url: https://github.com/prometheus/node_exporter/blob/master/https/README.md

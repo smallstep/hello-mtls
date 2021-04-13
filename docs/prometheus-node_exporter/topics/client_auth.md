@@ -1,23 +1,24 @@
-Now let's configure Prometheus to authenticate in the role of client to your `node_exporter` server. Here's an example job configuration block that you'd add to your `prometheus.yml`:
+Copy the `{{ ca_cert }}` file to a `node_exporter` configuration directory. You may need to make a directory for this, eg. `/etc/node_exporter`.
 
-```yaml
-#...
-scrape_configs:
-  - job_name: 'node'
-
-    scheme: https
-    tls_config:
-        # Prometheus will check that the node_exporter presents a certificate
-        # signed by this ca.
-        ca_file: '{{ ca_cert }}'
-        # The cert and key are presented to node_exporter to authenticate
-        # Prometheus as a client.
-        cert_file: '{{ client_cert }}'
-        key_file: '{{ client_key }}'
-
-    static_configs:
-    - targets: ['node_exporter_node:9100']
-#...
+```shell-session
+$ sudo cp {{ ca_cert }} /etc/node_exporter/root_ca.crt
 ```
 
-Reload Prometheus, and confirm that the Prometheus dashboard shows your node_exporter target endpoints as "UP"—and using the `https://` scheme.
+Make sure these files are owned and readable only by the user that `node_exporter` runs as.
+
+Now modify `/etc/node_exporter/web-config.yml` to require client authentication (in your `tls_server_config` block):
+
+```ini
+tls_server_config:
+  ...
+
+  # RequireAndVerifyClientCert is the most secure option; clients
+  # must present a valid client certificate signed by your CA.
+  client_auth_type: "RequireAndVerifyClientCert"
+
+  # This is the CA the client certificate must be signed by.
+  client_ca_file: "/etc/node_exporter/root_ca.crt"
+
+  ...
+```
+
