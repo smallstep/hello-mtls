@@ -1,0 +1,4 @@
+name: TiDB
+protocol: mysql
+server_port: 4000
+topics: {}
