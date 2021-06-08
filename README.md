@@ -68,4 +68,4 @@ All [documentation content](docs/) is licensed under [Creative Commons Attributi
 
 ## Support
 
-Please don't hesitate to reach out on [our Gitter](https://gitter.im/smallstep/community) with any questions.
+Please don't hesitate to reach out on [our Discord](https://bit.ly/stepdiscord) with any questions.
