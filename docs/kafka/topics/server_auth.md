@@ -6,7 +6,9 @@ Use `openssl` to package up the server private key and certificate into PKCS12 f
 $ openssl pkcs12 -export -in {{ server_cert }} -inkey {{ server_key }} -name {{ server_name }} > server.p12
 ```
 
-Next, use `keytool` to create a Java KeyStore (JKS) with the certificate and key for use by Kafka. You'll be prompted to create a new password for the resulting file as well as enter the password for the PKCS12 file from the previous step. Hang onto the new JKS password for use in configuration below.
+Next, use `keytool` to create a Java KeyStore (JKS) with the certificate and key for use by Kafka. 
+You'll be prompted to create a new password for the resulting file as well as enter the password for the PKCS12 file from the previous step. 
+Hang on to the new JKS password for use in configuration below.
 
 ```shell-session
 $ keytool -importkeystore -srckeystore server.p12 -destkeystore kafka.server.keystore.jks -srcstoretype pkcs12 -alias {{ server_name }}
@@ -18,7 +20,7 @@ $ keytool -importkeystore -srckeystore server.p12 -destkeystore kafka.server.key
 The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using "keytool -importkeystore -srckeystore server.p12 -destkeystore kafka.server.keystore.jks -srcstoretype pkcs12".
 ```
 
-You'll also need a trust store in JKS format containing the root certificate from your CA. Kafka brokers will use this trust store to make sure certificates presented by clients and other brokers were signed by your CA. Create the password and agree to trust your CA certificate (type "yes"). Hold onto thie password for this one as well.
+You'll also need a trust store in JKS format containing the root certificate from your CA. Kafka brokers will use this trust store to make sure certificates presented by clients and other brokers were signed by your CA. Create the password and agree to trust your CA certificate (type "yes"). Hold onto this password for this one as well.
 
 ```shell-session
 $ keytool -keystore kafka.server.truststore.jks -alias CARoot -import -file {{ ca_cert }}
