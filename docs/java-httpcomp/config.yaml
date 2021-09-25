@@ -1,0 +1,18 @@
+name: Java
+protocol: https
+server_port: 9443
+topics:
+  server_auth:
+    links:
+      - text: Apache HttpCore SSLContextBuilder for Server Auth Reference
+        url: https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/ssl/SSLContextBuilder.html
+  client_auth:
+    links:
+      - text: Apache HttpCore ServerBootstrap for Client Auth Reference
+        url: https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/impl/bootstrap/ServerBootstrap.html#setSslSetupHandler(org.apache.http.impl.bootstrap.SSLServerSetupHandler)
+  client:
+    links:
+      - text: Apache HttpClient Quick Start
+        url: https://hc.apache.org/httpcomponents-client-4.5.x/quickstart.html
+      - text: Apache HttpClient - SSL/TLS customization
+        url: https://hc.apache.org/httpcomponents-client-4.5.x/tutorial/html/connmgmt.html#d5e449
