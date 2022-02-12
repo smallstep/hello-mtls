@@ -15,7 +15,7 @@
     "dist": "webpack --config webpack/config.dist.js && cp package.json README.md LICENSE.txt ./dist"
   },
   "devDependencies": {
-    "ajv": "^6.10.2",
+    "ajv": "^6.12.3",
     "github-markdown-css": "^3.0.1",
     "image-size": "^0.7.4",
     "image-type": "^4.1.0",
