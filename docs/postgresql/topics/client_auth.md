@@ -29,7 +29,7 @@ Configure `pg_hba.conf`, creating `hostssl` records with the `clientcert=1` opti
 hostssl all             myuser          0.0.0.0/0               md5 clientcert=1
 ```
 
-Alternatively, if you'd like to disable password authentication and lean exclusively on client certificates for authentication, change from the `md5` authentication method and use the `cert` method instead. Note, however that this requires that the identity used as the Common Name in the certificate (when issued by your CA, eg. `{{ server_name }}`) exactly matches the PostgreSQL database user specified in connections from clients.
+Alternatively, if you'd like to disable password authentication and lean exclusively on client certificates for authentication, change from the `md5` authentication method and use the `cert` method instead. By default, this requires that the identity used as the Common Name in the certificate (when issued by your CA, eg. `{{ server_name }}`) exactly matches the PostgreSQL database user specified in connections from clients. User name mapping can be used to allow the Common Name to be different from the database user name. See more in the PostgreSQL [docs on certificate authentication](https://www.postgresql.org/docs/current/auth-cert.html).
 
 ```ini
 # ...
