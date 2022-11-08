@@ -21,7 +21,7 @@
     "image-type": "^4.1.0",
     "jest": "^24.8.0",
     "js-yaml": "^3.13.1",
-    "loader-utils": "^1.2.3",
+    "loader-utils": "^1.4.1",
     "lodash.merge": "^4.6.2",
     "next": "^9.3.2",
     "prettier": "^1.18.2",
