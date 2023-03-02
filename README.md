@@ -8,7 +8,8 @@ If you notice any outdated, missing, or errant docs, pull requests are strongly 
 
 Documentation for each technology lives in its corresponding directory in the [docs/](docs/) folder.
 
-To get rolling on local development, clone this repository and start the local dev server:
+To get rolling on local development, clone this repository, have yarn ready (`yarn set version classic` if you have yarn 3 installed)
+and use Node 16 (`nvm use`) and start the local dev server:
 
 ```
 $ yarn install

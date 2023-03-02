@@ -42,5 +42,6 @@
   "peerDependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }
