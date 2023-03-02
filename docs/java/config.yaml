@@ -1,0 +1,12 @@
+name: Java
+protocol: https
+server_port: 443
+topics:
+  client:
+    links:
+      - text: Java Key Store format
+        url: https://docs.oracle.com/cd/E19509-01/820-3503/ggfen/index.html
+      - text: "PKCS #12"
+        url: https://en.wikipedia.org/wiki/PKCS_12
+      - text: Introduction to the Java HTTP Client
+        url: https://openjdk.org/groups/net/httpclient/intro.html
