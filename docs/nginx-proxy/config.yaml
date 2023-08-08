@@ -6,3 +6,5 @@ topics:
     links:
       - text: Module ngx_http_ssl_module
         url: https://nginx.org/en/docs/http/ngx_http_proxy_module.html
+      - text: Securing HTTP Traffic to Upstream Servers
+        url: https://docs.nginx.com/nginx/admin-guide/security-controls/securing-http-traffic-upstream/
